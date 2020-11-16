@@ -422,10 +422,12 @@ router.put(
   async (req, res) => {
     try {
       if (req.body.email && req.body.email !== "") {
-        const emailExists = await User.findOne({ email: req.body.email });
+        const emailExists = await User.findOne({
+          email: req.body.email,
+          _id: { $ne: mongoose.Types.ObjectId(req.user.id) },
+        });
         if (emailExists) {
-          if (emailExists._id !== mongoose.Types.ObjectId(req.user.id))
-            throw { message: "Email already exists in some other account." };
+          throw { message: "Email already exists in some other account." };
         }
       }
       const newUser = await User.findOneAndUpdate(
