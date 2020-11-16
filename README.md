@@ -21,14 +21,8 @@ The purpose of this project is to implement a fully functional online restaurant
 
 1. Login/Sign up
 2. Inventory Management
-3. Paypal API for billing
-4. Feedback Management
-
-## Active Branches
-
-1. mern-try: trying out developing a simple version of the site using the MERN stack. In short, developing back-end functionality with a quickly spun-up front-end.
-2. bootstrap-template: developing a pretty front-end to hook up with the back-end.
-3. apis-try: Aan is trying out the Paypal and Google Maps APIs.
+3. Stripe API for billing
+4. Order management
 
 ## Steps for deploying to Heroku
 
