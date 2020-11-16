@@ -25,7 +25,7 @@ router.get("/", authAdmin, async (req, res) => {
   }
 });
 
-router.post("/list", authAdmin, async (req, res) => {
+router.post("/list", auth, async (req, res) => {
   try {
     const itemIds = req.body.map((x) => mongoose.Types.ObjectId(x));
     const items = await Item.find({ _id: { $in: itemIds } });
