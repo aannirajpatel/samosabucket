@@ -139,17 +139,34 @@ function Me({ loginHandler }) {
       .catch((err) => {
         setIsError(true);
         setIsLoading(false);
-        setIsLoggedIn(false);
+        if (err.response.status === 401) {
+          setIsLoggedIn(false);
+        }
         loginHandler();
-        toast.error("Error: " + err.response.data.message, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        if (err.response.data) {
+          if (err.response.data.error) {
+            toast.error("Error: " + err.response.data.error[0].msg, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+          if (err.response.data.message) {
+            toast.error("Error: " + err.response.data.message, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        }
       });
   };
   useEffect(() => {
@@ -405,7 +422,9 @@ function Me({ loginHandler }) {
             {isError && (
               <div className="has-background-danger has-text-white my-2 p-2">
                 <p>
-                  There might have been an error logging in, please try again.
+                  There might have been an error updating the user, please check
+                  that all the required fields, are properly filled, and please
+                  try again.
                 </p>
               </div>
             )}

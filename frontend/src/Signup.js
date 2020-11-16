@@ -72,6 +72,8 @@ function Signup({ loginHandler, redirectTo }) {
     setLine1(e.target.value);
     if (e.target.value.length > 3) {
       debouncedAutocompleteQueryAndSet(e.target.value);
+    } else {
+      setAutocompleteData([]);
     }
   };
   const line2Change = (e) => {

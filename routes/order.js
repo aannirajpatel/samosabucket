@@ -14,20 +14,83 @@ const moment = require("moment");
 require("dotenv").config();
 router.use(cookieParser());
 
-//TODO: Add a stripe key
 const stripe = require("stripe")(process.env.STRIPE_SK);
 const { v4: uuid } = require("uuid");
 
-//middleware
+/* 
+Endpoint:
+	POST  /order/
+
+Purpose:
+  Validates and processes an order and adds it to the MongoDB data store.
+
+Credentials accepted: Basic user, Admin
+
+Request Params: Empty
+
+Request Body: A JSON object, with the following keys -
+  order: A JSON object, which contains all the details about the order
+    type: JSON object
+    keys:
+      cart: A JSON array with elements denoting individual order items and their quantities purchased.
+            Hence elements are of the format {itemId, qty, price}, each key with its obvious meaning.
+      amount: The payment amount, in USD.
+        type: Number
+      address: A JSON object denoting the delivery address for the current order
+        type: JSON object
+        keys:
+          line1: Address line 1
+            type: String
+          line2: Address line 2
+            type: String
+          city: Address city
+            type: String
+          state: Address state
+            type: String
+          zip: Address ZIP code
+            type: String
+    REQUIRED
+
+  token: A JSON object, which is the payment token generated after processing payment on the front-end.
+    type: JSON Object
+    keys (only listing used keys):
+      id: Stripe Payment token ID generated from the payment
+      email: E-mail the user wants to use for processing the payment, not necessarily SamosaBucket registered email
+      card: A JSON object representing credit/debit card payment data
+        type: JSON object
+        keys (only listing used keys):
+          name: Name of the user as on their credit/debit card
+          id: card payment id (same as the token id except two prefix characters that differ)
+    REQUIRED
+
+  deliveryTime: User-requested delivery time
+    type: Date
+    REQUIRED
+
+
+Response:
+  Responds with status 200 and a JSON object, {message: "Order created."}, if everything goes well.
+  Responds with status 402 and a JSON object, {message: "Payment was not completed. Please contact us if money was sent."}, if everything does not go well
+
+Example axios request:
+const result = await axios({
+  method: 'post',
+  url: '/order/',
+  withCredentials: true,
+  data:{
+    token,
+    order,
+    deliveryTime
+  }
+});
+
+ */
 
 router.post("/", auth, async (req, res) => {
   //pass on a token from frontend - email, prod info, charge/price of product
   const { order, token, deliveryTime } = req.body;
   const { cart, amount, address } = order;
-  /* console.log("ORDER", order);
-  console.log("DEL_TIME", deliveryTime);
-  console.log("PAID", amount);
-  console.log("TOKEN", token); */
+
   const idempotencyKey = uuid();
   return stripe.customers
     .create({ email: token.email, source: token.id })
@@ -71,15 +134,38 @@ router.post("/", auth, async (req, res) => {
       console.log(err);
       res.status(402).json({
         message:
-          "Payment was not completed. Please contact us if money was sent." +
-          err,
+          "Payment was not completed. Please contact us if money was sent.",
       });
     });
 });
 
+/* 
+Endpoint:
+	GET  /order/
+
+Purpose:
+  Gets a list of all orders made by the current user.
+
+Credentials accepted: Basic user, Admin
+
+Request Params: Empty
+
+Request Body: Empty
+
+Response:
+  A JSON array of order objects.
+
+Example axios request:
+const result = await axios({
+  method: 'get',
+  url: '/order/',
+  withCredentials: true,
+});
+
+ */
+
 router.get("/", auth, async (req, res) => {
   try {
-    /*     console.log(req.user.id); */
     const orders = await Order.find({
       userId: mongoose.Types.ObjectId(req.user.id),
     }).sort({
@@ -91,6 +177,36 @@ router.get("/", auth, async (req, res) => {
     res.status(400).json({ message: JSON.stringify(err) });
   }
 });
+
+/* 
+Endpoint:
+	PUT  /order/:id
+  Where ":id" is the Object Id of the order document
+Purpose:
+  Updates the status of the order according to the user's choice. As of now, restricted to only
+  updating to "USER_CANCELLED".
+
+Credentials accepted: Basic user, Admin
+
+Request Body:
+  status: The status to be set for the order
+    type: String
+    REQUIRED
+
+Response:
+  The modified order object in JSON format.
+
+Example axios request:
+const result = await axios({
+  method: 'put',
+  url: '/order/'+order_id,
+  withCredentials: true,
+  data:{
+    status:"USER_CANCELLED"
+  }
+});
+
+ */
 
 router.put("/:id", auth, async (req, res) => {
   try {

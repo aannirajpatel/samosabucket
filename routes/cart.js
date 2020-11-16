@@ -9,6 +9,40 @@ require("dotenv").config();
 
 router.use(cookieParser());
 
+/* 
+Endpoint:
+	POST  /cart/
+
+Purpose:
+  Adds an Item to the logged in current user's cart. If the Item already exists in the cart, that Item gets
+  updated with the new provided quantity.
+  
+Credentials accepted: Basic user, Admin
+
+Request Body: Is an object, with the following keys -
+  itemId: The Document ID of the Item to be added to the cart
+    type: String
+    REQUIRED
+  
+  qty: The quantity of the Item to be added to the cart
+    type: Number
+    REQUIRED
+
+Response:
+  Responds with an array in JSON format containing the new cart items.
+  Each element of the array is an object of the format: { itemId, qty, price },
+  where the keys have their obvious meanings.
+  
+Example axios request:
+const result = await axios({
+  method: 'post',
+  url: '/cart/',
+  withCredentials: true,
+  data: {itemId:id_of_item_to_add_to_cart,qty:quantity_of_that_item_to_add_to_cart},
+});
+
+ */
+
 router.post("/", auth, async (req, res) => {
   try {
     const itemId = req.body.itemId;
@@ -36,6 +70,32 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
+/* 
+Endpoint:
+  DELETE  /cart/:id
+  Where ":id" is the itemId of the object to be removed from the user's cart.
+
+Purpose:
+  Removes an item from the user's cart
+  
+Credentials accepted: Basic user, Admin
+
+Request Body: Empty
+
+Response:
+  Responds with an array in JSON format containing the updated cart.
+  Each element of the array is an object of the format: { itemId, qty, price },
+  where the keys have their obvious meanings.
+  
+Example axios request:
+const result = await axios({
+  method: 'delete',
+  url: '/cart/'+id_of_item_to_delete_from_cart,
+  withCredentials: true,
+});
+
+ */
+
 router.delete("/:id", auth, async (req, res) => {
   try {
     const itemId = req.params.id;
@@ -55,6 +115,31 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(400).send({ message: e.message });
   }
 });
+
+/* 
+Endpoint:
+	DELETE  /cart/
+
+Purpose:
+  Removes all items from the user's cart, used when an order payment is successful to flush the cart.
+
+Credentials accepted: Basic user, Admin
+
+Request Params: Empty
+
+Request Body: Empty
+
+Response:
+  Responds with an array in JSON format containing the updated cart (which is, an empty array).
+
+Example axios request:
+const result = await axios({
+  method: 'delete',
+  url: '/cart/',
+  withCredentials: true,
+});
+
+ */
 
 router.delete("/", auth, async (req, res) => {
   try {
