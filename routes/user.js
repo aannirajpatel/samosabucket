@@ -430,6 +430,10 @@ router.put(
           throw { message: "Email already exists in some other account." };
         }
       }
+      if (req.body.password) {
+        const salt = await bcrypt.genSalt(10);
+        res.body.password = await bcrypt.hash(res.body.password, salt);
+      }
       const newUser = await User.findOneAndUpdate(
         {
           _id: mongoose.Types.ObjectId(req.user.id),
