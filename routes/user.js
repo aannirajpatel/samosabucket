@@ -432,7 +432,7 @@ router.put(
       }
       if (req.body.password) {
         const salt = await bcrypt.genSalt(10);
-        res.body.password = await bcrypt.hash(res.body.password, salt);
+        req.body.password = await bcrypt.hash(req.body.password, salt);
       }
       const newUser = await User.findOneAndUpdate(
         {
