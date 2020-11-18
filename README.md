@@ -2,7 +2,7 @@
 
 ## COMP426 Modern Web Programming Project at UNC-Chapel Hill
 
-The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `cooking` to the `delivered` stage. We will develop an aesthetic frontend experience that will enable users to quickly navigate desired menu items to choose from.
+The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `paid` to the `delivered` stage. We will develop an aesthetic frontend experience that will enable users to quickly buy their desired snacks.
 
 ## Team Members
 
@@ -23,7 +23,7 @@ The purpose of this project is to implement a fully functional online restaurant
 
 1. Login/Sign up
 2. Inventory Management
-3. Stripe API for billing
+3. Billing and Payments
 4. Order management
 
 ## Steps for deploying to Heroku
@@ -33,7 +33,7 @@ The purpose of this project is to implement a fully functional online restaurant
 3. In the app's directory, run `heroku git:remote -a "your-app-name"` where `"your-app-name"` needs to be changed according to the name of your heroku app.
 4. In the app's directory, run `git add .` to add all the files to the git repo for heroku.
 5. Go to the project's root directory (if your app was in a subdirectory, this is where you would do `cd ..`).
-6. <ol type="a"><li>If your project is in a subdirectory, run `git subtree push --prefix subdirectory-name/ heroku master`, remember to replace `subdirectory-name` with the name of your subdirectory.</li><li>If your project is at the root directory of the git repo, simply run `git push heroku master`</li></ol>
+6. <ol type="a"><li>If your project is in a subdirectory, run <code>git subtree push --prefix subdirectory-name/ heroku master</code>, remember to replace <code>subdirectory-name</code> with the name of your subdirectory.</li><li>If your project is at the root directory of the git repo, simply run `git push heroku master`</li></ol>
 7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files. Our project uses the following environment variables:<br>
    `DB_URL`: The MongoDB URL with the login parameters.<br>
    `JWT_SECRET`: The secret key for signing the authentication payloads.<br>
