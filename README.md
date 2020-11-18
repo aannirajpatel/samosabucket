@@ -4,11 +4,6 @@
 
 The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `paid` to the `delivered` stage. We will develop an aesthetic frontend experience that will enable users to quickly buy their desired snacks.
 
-## Team Members
-
-1. Aan Patel <aanpatel.tech@gmail.com>
-2. Shaswat Joshi <joshishaswat@gmail.com>
-
 ## Tech Stack
 
 1. Bulma CSS
