@@ -28,7 +28,7 @@ The purpose of this project is to implement a fully functional online restaurant
 3. In the app's directory, run `heroku git:remote -a "your-app-name"` where `"your-app-name"` needs to be changed according to the name of your heroku app.
 4. In the app's directory, run `git add .` to add all the files to the git repo for heroku.
 5. Go to the project's root directory (if your app was in a subdirectory, this is where you would do `cd ..`).
-6. <ol type="a"><li>If your project is in a subdirectory, run <code>git subtree push --prefix subdirectory-name/ heroku master</code>, remember to replace <code>subdirectory-name</code> with the name of your subdirectory.</li><li>If your project is at the root directory of the git repo, simply run <code>git push heroku master</code></li></ol>
+6. <ol type="a"><li>If your project is in a subdirectory, run <code>git subtree push --prefix subdirectory-name/ heroku branch-name</code>, remember to replace <code>subdirectory-name</code> with the name of your subdirectory, and <code>branch-name</code> with the name of the branch that you wish to deploy.</li><li>If your project is at the root directory of the git repo, simply run <code>git push heroku branch-name</code></li></ol>
 7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files. Our project uses the following environment variables:<br>
    `DB_URL`: The MongoDB URL with the login parameters.<br>
    `JWT_SECRET`: The secret key for signing the authentication payloads.<br>
