@@ -34,14 +34,12 @@ The purpose of this project is to implement a fully functional online restaurant
 4. In the app's directory, run `git add .` to add all the files to the git repo for heroku.
 5. Go to the project's root directory (if your app was in a subdirectory, this is where you would do `cd ..`).
 6. <ol type="a"><li>If your project is in a subdirectory, run `git subtree push --prefix subdirectory-name/ heroku master`, remember to replace `subdirectory-name` with the name of your subdirectory.</li><li>If your project is at the root directory of the git repo, simply run `git push heroku master`</li></ol>
-7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files. Our project uses the following environment variables:
-<ul>
-<li>`DB_URL`: The MongoDB URL with the login parameters.</li>
-<li>`JWT_SECRET`: The secret key for signing the authentication payloads.</li>
-<li>`REACT_APP_BACKEND_API`: The backend API URL, left blank if frontend deployed on the same host as backend.</li>
-<li>`REACT_APP_CLOUDINARY_CLOUDNAME`: The cloud name where we are uploading the product images.</li>
-<li>`REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.</li>
-<li>`REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.</li>
-<li>`REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.</li>
-<li>`STRIPE_SK`: Secret key for the Stripe Payments API.</li>
-</ul>
+7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files. Our project uses the following environment variables:<br>
+   `DB_URL`: The MongoDB URL with the login parameters.<br>
+   `JWT_SECRET`: The secret key for signing the authentication payloads.<br>
+   `REACT_APP_BACKEND_API`: The backend API URL, left blank if frontend deployed on the same host as backend.<br>
+   `REACT_APP_CLOUDINARY_CLOUDNAME`: The cloud name where we are uploading the product images.<br>
+   `REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.<br>
+   `REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.<br>
+   `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
+   `STRIPE_SK`: Secret key for the Stripe Payments API.<br>
