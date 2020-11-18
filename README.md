@@ -1,5 +1,7 @@
 # Samosabucket
 
+## COMP426 Modern Web Programming Project at UNC-Chapel Hill
+
 The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `cooking` to the `delivered` stage. We will develop an aesthetic frontend experience that will enable users to quickly navigate desired menu items to choose from.
 
 ## Team Members
@@ -31,5 +33,15 @@ The purpose of this project is to implement a fully functional online restaurant
 3. In the app's directory, run `heroku git:remote -a "your-app-name"` where `"your-app-name"` needs to be changed according to the name of your heroku app.
 4. In the app's directory, run `git add .` to add all the files to the git repo for heroku.
 5. Go to the project's root directory (if your app was in a subdirectory, this is where you would do `cd ..`).
-6. <ol type="a"><li>If your project is in a subdirectory like us, run `git subtree push --prefix tutorial-code/ heroku master`, remember to replace</li><li>If your project is at the root directory of the git repo, run `git push heroku master`</li></ol>
-7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files.
+6. <ol type="a"><li>If your project is in a subdirectory, run `git subtree push --prefix subdirectory-name/ heroku master`, remember to replace `subdirectory-name` with the name of your subdirectory.</li><li>If your project is at the root directory of the git repo, simply run `git push heroku master`</li></ol>
+7. Open your Heroku dashboard online, and go to the settings tab, click `Config Vars` and set the required environment variables by looking at your .env / other files. Our project uses the following environment variables:
+<ul>
+<li>`DB_URL`: The MongoDB URL with the login parameters.</li>
+<li>`JWT_SECRET`: The secret key for signing the authentication payloads.</li>
+<li>`REACT_APP_BACKEND_API`: The backend API URL, left blank if frontend deployed on the same host as backend.</li>
+<li>`REACT_APP_CLOUDINARY_CLOUDNAME`: The cloud name where we are uploading the product images.</li>
+<li>`REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.</li>
+<li>`REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.</li>
+<li>`REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.</li>
+<li>`STRIPE_SK`: Secret key for the Stripe Payments API.</li>
+</ul>
