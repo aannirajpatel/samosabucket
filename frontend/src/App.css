@@ -37,6 +37,6 @@
   }
 }
 
-.pay-btn span {
-  display: inline-block;
+.pay-btn {
+  overflow: hidden;
 }

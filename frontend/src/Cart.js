@@ -118,7 +118,7 @@ function Cart({ refreshCart }) {
       <div className="title is-1 has-text-centered columns is-centered mb-5">
         <span className="is-italic column is-4">Review your order</span>
       </div>
-      <div className="columns is-centered">
+      <div className="columns is-centered is-desktop">
         <div className="column is-half">
           {cartItems.map((x) => {
             return (
