@@ -171,6 +171,7 @@ function Cart({ refreshCart }) {
                 required={true}
                 minDate={Date.now()}
               />
+              <br />
               <StripeCheckout
                 stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
                 token={makePayment}
