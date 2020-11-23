@@ -66,7 +66,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
                 REMOVE
               </button>
             </div>
-            <div className="control">
+            <div className="control pb-2">
               <div className="select">
                 <select onChange={handleQty} value={qty}>
                   {[...Array(5)].map((x, index) => {
