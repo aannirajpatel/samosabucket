@@ -172,7 +172,7 @@ function Cart({ refreshCart }) {
                 minDate={Date.now()}
               />
               <br />
-              <div className="container">
+              <div className="pay-btn">
                 <StripeCheckout
                   stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
                   token={makePayment}
