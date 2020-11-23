@@ -177,8 +177,8 @@ function Cart({ refreshCart }) {
                 name="Samosabucket Purchase"
                 amount={total * 100}
               >
-                <button className="button is-primary is-large">
-                  COMPLETE PAYMENT ${order.amount}
+                <button className="button is-primary is-large mt-2">
+                  COMPLETE PAYMENT
                 </button>
               </StripeCheckout>
             </div>
