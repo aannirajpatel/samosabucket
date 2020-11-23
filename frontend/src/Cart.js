@@ -172,16 +172,18 @@ function Cart({ refreshCart }) {
                 minDate={Date.now()}
               />
               <br />
-              <StripeCheckout
-                stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
-                token={makePayment}
-                name="Samosabucket Purchase"
-                amount={total * 100}
-              >
-                <button className="button is-primary is-large mt-2">
-                  CONFIRM {`&`} PAY
-                </button>
-              </StripeCheckout>
+              <div className="container">
+                <StripeCheckout
+                  stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+                  token={makePayment}
+                  name="Samosabucket Purchase"
+                  amount={total * 100}
+                >
+                  <button className="button is-primary is-large mt-2">
+                    CONFIRM {`&`} PAY
+                  </button>
+                </StripeCheckout>
+              </div>
             </div>
           )}
         </div>
