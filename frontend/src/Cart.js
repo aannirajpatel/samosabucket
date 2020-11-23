@@ -178,7 +178,7 @@ function Cart({ refreshCart }) {
                 amount={total * 100}
               >
                 <button className="button is-primary is-large mt-2">
-                  COMPLETE PAYMENT
+                  CONFIRM {`&`} PAY
                 </button>
               </StripeCheckout>
             </div>
