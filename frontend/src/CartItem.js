@@ -50,7 +50,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
   if (!isLoggedIn) return <Redirect to="/login" />;
   return (
     item !== undefined && (
-      <div className="columns is-mobile is-centered is-vcentered box p-0 mx-1 mb-1">
+      <div className="columns is-mobile is-centered is-vcentered box p-0 mx-1 mb-4">
         <div className="column is-3 p-0">
           <figure className="image is-square">
             <img src={item.imageUrl} alt={"Photo of" + item.name} />
