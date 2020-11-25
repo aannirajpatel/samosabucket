@@ -58,13 +58,23 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
     window.cloudinary.openUploadWidget(
       {
         cloudName: process.env.REACT_APP_CLOUDINARY_CLOUDNAME,
-        uploadPreset: "samosabucket",
-        folder: "samosabucket",
+        uploadPreset:
+          process.env.REACT_APP_CLOUDINARY_UPLOADPRESET || "samosabucket",
+        folder: process.env.REACT_APP_CLOUDINARY_FOLDER || "samosabucket",
         sources: ["local", "url"],
         maxFiles: 1,
         cropping: true,
         croppingAspectRatio: 1,
-        clientAllowedFormats: ["png", "gif", "jpeg"],
+        clientAllowedFormats: [
+          "png",
+          "gif",
+          "jpeg",
+          "tif",
+          "tiff",
+          "bmp",
+          "jpg",
+          "webp",
+        ],
       },
       (err, res) => {
         if (res.event === "success") {
