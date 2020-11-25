@@ -33,7 +33,9 @@ The purpose of this project is to implement a fully functional online restaurant
    `DB_URL`: The MongoDB URL with the login parameters.<br>
    `JWT_SECRET`: The secret key for signing the authentication payloads.<br>
    `REACT_APP_BACKEND_API`: The backend API URL, left blank if frontend deployed on the same host as backend.<br>
-   `REACT_APP_CLOUDINARY_CLOUDNAME`: The cloud name where we are uploading the product images.<br>
+   `REACT_APP_CLOUDINARY_CLOUDNAME`: The cloud name, shown when you create a Cloudinary account and log into the dashboard.<br>
+   `REACT_APP_CLOUDINARY_FOLDER`: The name of the folder on your cloudinary API dashboard, where you want your menu item images to get uploaded.<br>
+   `REACT_APP_CLOUDINARY_UPLOADPRESET`: The name of the upload preset (you need to create a preset in your Cloudinary API settings by clicking on the gear icon > Upload > Add upload preset (will have to scroll down to find that "Add upload preset" link). The preset must be an Unsigned upload type preset that accepts images, and the folder set in the preset settings should match the folder set in <code>REACT_APP_CLOUDINARY_FOLDER</code>). It is suggested that the "Discard original file name" setting be turned on.<br>
    `REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.<br>
    `REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.<br>
    `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
