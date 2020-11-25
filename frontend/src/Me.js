@@ -71,7 +71,7 @@ function Me({ loginHandler }) {
   const line1Change = (e) => {
     setLine1(e.target.value);
     if (e.target.value.length > 3) {
-      debouncedAutocompleteQueryAndSet(e.target.value);
+      debouncedAutocompleteQueryAndSet(e.target.value); //COMMENT TO DISABLE ADDRESS AUTOCOMPLETE, UNCOMMENT TO ENABLE
     } else {
       setAutocompleteData([]);
     }
@@ -87,8 +87,8 @@ function Me({ loginHandler }) {
     setZip(e.target.value);
   };
 
-  const stateChange = (value) => {
-    setState(value);
+  const stateChange = (e) => {
+    setState(e.target.value);
   };
 
   const updateSubmit = (e) => {
