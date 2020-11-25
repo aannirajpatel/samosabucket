@@ -7,10 +7,10 @@ The purpose of this project is to implement a fully functional online restaurant
 ## Tech Stack
 
 1. Bulma CSS
-2. ReactJS
-3. Node and Express (Backend, with `cors`,`cookie-parser`, `uuid` used as middleware)
-4. MongoDB Atlas (Cloud MongoDB instance)
-5. Cloudinary (Image uploads)
+2. React (A JavaScript UI Framework)
+3. Node and Express (Backend, with `cors`,`cookie-parser`, `uuid`, and `express-validator` used as middleware)
+4. MongoDB Atlas (For spinning up and using a Cloud MongoDB instance)
+5. Cloudinary (For handling image uploads)
 6. Positionstack (Address autocomplete suggestions API)
 7. Stripe Payments API (both frontend and backend)
 
