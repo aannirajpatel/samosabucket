@@ -71,7 +71,9 @@ function Me({ loginHandler }) {
   const line1Change = (e) => {
     setLine1(e.target.value);
     if (e.target.value.length > 3) {
-      debouncedAutocompleteQueryAndSet(e.target.value); //COMMENT TO DISABLE ADDRESS AUTOCOMPLETE, UNCOMMENT TO ENABLE
+      if (process.env.REACT_APP_POSITIONSTACK_ENABLED === "TRUE") {
+        debouncedAutocompleteQueryAndSet(e.target.value);
+      }
     } else {
       setAutocompleteData([]);
     }
