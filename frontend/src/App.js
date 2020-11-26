@@ -16,6 +16,7 @@ import Signup from "./Signup";
 import Me from "./Me";
 import AdminOrders from "./AdminOrders";
 import AdminProducts from "./AdminProducts";
+import Info from "./Info";
 function App() {
   const [user, setUser] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -111,6 +112,9 @@ function App() {
         </Route>
         <Route path="/orders">
           <Orders loginHandler={loginHandler} />
+        </Route>
+        <Route path="/info">
+          <Info />
         </Route>
         <Route path="/adminorders">
           <AdminOrders loginHandler={loginHandler} />

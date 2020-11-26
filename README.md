@@ -40,5 +40,6 @@ The purpose of this project is to implement a fully functional online restaurant
    `REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.<br>
    `REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.<br>
    `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
+   `REACT_APP_INFO_TAB_NAME`: Set to any string to show up as the info/help/support tab name.<br>
    `STRIPE_SK`: Secret key for the Stripe Payments API.<br>
-   `ENFORCE_HTTPS`: TRUE if you wish to enforce HTTPS, FALSE if you don't.
+   `ENFORCE_HTTPS`: TRUE if you wish to enforce HTTPS, FALSE if you don't.<br>
