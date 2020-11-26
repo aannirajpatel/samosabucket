@@ -41,3 +41,4 @@ The purpose of this project is to implement a fully functional online restaurant
    `REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.<br>
    `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
    `STRIPE_SK`: Secret key for the Stripe Payments API.<br>
+   `ENFORCE_HTTPS`: TRUE if you wish to enforce HTTPS, FALSE if you don't.
