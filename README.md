@@ -49,4 +49,4 @@ Contributors are always welcome. Here are some things you can do to contribute t
    `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
    `REACT_APP_INFO_TAB_NAME`: Set to any string to show up as the info/help/support tab name.<br>
    `STRIPE_SK`: Secret key for the Stripe Payments API.<br>
-   `ENFORCE_HTTPS`: TRUE if you wish to enforce HTTPS, FALSE if you don't.<br>
+   `ENFORCE_HTTPS`: [This is only useful for localhost https enforcement, please set to FALSE when deploying to Heroku] TRUE if you wish to enforce HTTPS, FALSE if you don't.<br>
