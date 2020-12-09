@@ -1,8 +1,6 @@
 # Samosabucket
 
-## COMP426 Modern Web Programming Project at UNC-Chapel Hill
-
-The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `paid` to the `delivered` stage. We will develop an aesthetic frontend experience that will enable users to quickly buy their desired snacks.
+The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `paid` to the `delivered` stage.
 
 ## Tech Stack
 
@@ -20,6 +18,15 @@ The purpose of this project is to implement a fully functional online restaurant
 2. Inventory Management
 3. Billing and Payments
 4. Order management
+
+## Contribution
+
+Contributors are always welcome. Here are some things you can do to contribute to this noble cause:
+
+1. If you find bugs/have suggestions, please report them on the GitHub repo’s issues page.
+2. We need a docs overhaul. One of the main goals is to make the deployment process well-documented so even non-tech-savvy people can set this up for cheap. So, send in a pull request if you’d like to help add better documentation, especially regarding deployment.
+3. We need more features, especially for sorting and searching through food orders and menu items.
+4. To learn how the project is structured, this video (I made it as part of a course project submission) is a good starting point: https://youtu.be/5aaHLsasL6Y
 
 ## Steps for deploying to Heroku
 
