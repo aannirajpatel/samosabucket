@@ -10,15 +10,11 @@ const order = require("./routes/order");
 const adminOrder = require("./routes/adminOrder");
 const adminProduct = require("./routes/adminProduct");
 const path = require("path");
-const enforce = require("express-sslify");
 const StartMongo = require("./config/db");
 StartMongo();
 const PORT = process.env.PORT || 5000;
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(bodyParser.json());
-if (process.env.ENFORCE_HTTPS === "TRUE") {
-  app.use(enforce.HTTPS());
-}
 /* BACKEND API ENDPOINTS */
 
 app.use("/user", user);
