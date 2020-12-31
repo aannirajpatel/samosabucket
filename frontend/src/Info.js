@@ -13,19 +13,27 @@ function Info() {
               <li>Click on CONFIRM {"&"} PAY, then complete the payment.</li>
             </ol>
           </p>
-          <div className="subtitle">
-            Having issues? Business queries? Reach out to us:
-          </div>
-          <p>Phone: +1-919-123-4567</p>
+          <div className="subtitle">Having issues? Reach out to us!</div>
+          <p>
+            GitHub issues page:{" "}
+            <a href="https://github.com/aannirajpatel/samosabucket"></a>
+          </p>
           <p>
             Email: <a href="mailto:example@gmail.com">example@gmail.com</a>
           </p>
           <p>
             Policy:{" "}
             <a href="https://www.google.com/" target="_blank">
-              this
+              Dummy link
             </a>
           </p>
+          <small>
+            Made using the open source project{" "}
+            <a href="https://github.com/aannirajpatel/samosabucket">
+              Samosabucket
+            </a>{" "}
+            by <a href="https://aanpatel.tech">aanpatel.tech</a>
+          </small>
         </div>
       </div>
     </div>
