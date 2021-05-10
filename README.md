@@ -27,8 +27,10 @@ Contributors are always welcome. Steps are simple - fork the repo, make your cha
 
 1. If you find bugs/have suggestions, please report them on the GitHub repo’s issues page. This does not require forking the repo.
 2. We need a docs overhaul. One of the main goals is to make the deployment process well-documented so even non-tech-savvy people can set this up for cheap. So, try looking at the code, and send in a pull request if you’d like to help add better documentation, especially regarding deployment.
-3. We need more features, especially for sorting and searching through food orders and menu items.
+3. We need more features, especially for sorting and searching through food orders and menu items. So feel free to add or suggest any new features.
 4. To learn how the project is structured, this video (I made it as part of a course project submission) is a good starting point: https://youtu.be/5aaHLsasL6Y
+5. If you think code can be better reorganized, certainly do so!
+6. Since the admin side of the app will only ever be accessed by system admins, I used Cloudinary's public cloud upload service to upload the images to Cloudinary directly from the front-end, i.e., React, using the free Cloudinary ID we have. We would be better off if we use the backend in order to upload the images to somewhere like Amazon S3.
 
 ## Steps for deploying to Heroku
 
