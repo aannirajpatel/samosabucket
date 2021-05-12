@@ -1,6 +1,6 @@
 # Samosabucket
 
-Demo: samosabucket.herokuapp.com
+Test it out! [samosabucket.herokuapp.com](https://samosabucket.herokuapp.com)
 
 The purpose of this project is to implement a fully functional online restaurant ordering, order and product management website, that allows users to place orders and track their order from the `paid` to the `delivered` stage.
 
