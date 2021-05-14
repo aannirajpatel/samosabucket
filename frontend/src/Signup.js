@@ -409,8 +409,8 @@ function Signup({ loginHandler, redirectTo }) {
               <div className="has-background-danger has-text-white my-2 p-2">
                 <p>
                   You might have missed or made a mistake on one or more fields
-                  on the sign up form above. Please note that only address line
-                  2 is optional, everything else is required.
+                  on the sign up form above. Please note that all fields except for address line
+                  2, Venmo ID, and allergies/special instructions are required.
                 </p>
               </div>
             )}
