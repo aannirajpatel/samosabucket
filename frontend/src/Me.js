@@ -197,6 +197,8 @@ function Me({ loginHandler }) {
         setCity(res.data.address.city);
         setZip(res.data.address.zip);
         setState(res.data.address.state);
+        setVenmo(res.data.venmo);
+        setOther(res.data.other);
         setIsLoading(false);
       })
       .catch((e) => {});
