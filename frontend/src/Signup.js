@@ -16,6 +16,8 @@ function Signup({ loginHandler, redirectTo }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
+  const [venmo, setVenmo] = useState("");
+  const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -93,6 +95,14 @@ function Signup({ loginHandler, redirectTo }) {
     setState(e.target.value);
   };
 
+  const venmoChange = (e) => {
+    setVenmo(e.target.value);
+  };
+
+  const otherChange = (e) => {
+    setOther(e.target.value);
+  };
+
   const signUpSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -112,6 +122,8 @@ function Signup({ loginHandler, redirectTo }) {
           country: "US",
         },
         phone: phone,
+        venmo: venmo,
+        other: other,
       },
       withCredentials: true,
     })
@@ -338,6 +350,40 @@ function Signup({ loginHandler, redirectTo }) {
                       required=""
                       value={zip}
                       onChange={zipChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label" htmlFor="venmo" onChange={venmoChange}>
+                  Venmo ID (If applicable)
+                  </label>
+                  <div className="control">
+                    <input
+                      id="venmo"
+                      name="venmo"
+                      type="text"
+                      className="input "
+                      required=""
+                      value={venmo}
+                      onChange={venmoChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label" htmlFor="other" onChange={otherChange}>
+                  Allergies / Special Instructions (Optional)
+                  </label>
+                  <div className="control">
+                    <input
+                      id="other"
+                      name="other"
+                      type="text"
+                      className="input "
+                      required=""
+                      value={other}
+                      onChange={otherChange}
                     />
                   </div>
                 </div>

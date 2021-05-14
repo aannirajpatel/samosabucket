@@ -16,6 +16,8 @@ function Me({ loginHandler }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
+  const [venmo, setVenmo] = useState("");
+  const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -93,6 +95,14 @@ function Me({ loginHandler }) {
     setState(e.target.value);
   };
 
+  const venmoChange = (e) => {
+    setVenmo(e.target.value);
+  };
+
+  const otherChange = (e) => {
+    setOther(e.target.value);
+  };
+
   const updateSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -108,6 +118,8 @@ function Me({ loginHandler }) {
         country: "US",
       },
       phone: phone,
+      venmo: venmo,
+      other: other,
     };
 
     if (password != "") payload.password = password;
@@ -400,6 +412,40 @@ function Me({ loginHandler }) {
                       required=""
                       value={zip}
                       onChange={zipChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label" htmlFor="venmo">
+                  Venmo ID (If applicable)
+                  </label>
+                  <div className="control">
+                    <input
+                      id="venmo"
+                      name="venmo"
+                      type="text"
+                      className="input "
+                      required=""
+                      value={venmo}
+                      onChange={venmoChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label" htmlFor="other" onChange={otherChange}>
+                  Allergies / Special Instructions (Optional)
+                  </label>
+                  <div className="control">
+                    <input
+                      id="other"
+                      name="other"
+                      type="text"
+                      className="input "
+                      required=""
+                      value={other}
+                      onChange={otherChange}
                     />
                   </div>
                 </div>
