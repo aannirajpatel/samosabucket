@@ -14,7 +14,7 @@ function Signup({ loginHandler, redirectTo }) {
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState("Alabama");
   const [zip, setZip] = useState("");
   const [venmo, setVenmo] = useState("");
   const [other, setOther] = useState("");

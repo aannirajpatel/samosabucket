@@ -15,7 +15,9 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [deliveryTime, setDeliveryTime] = useState(new Date());
+  // const [deliveryTime, setDeliveryTime] = useState(new Date());
+  const [deliveryTime, setDeliveryTime] = useState("");
+
 
   useEffect(() => {
     if (error !== "")
@@ -111,6 +113,18 @@ function Cart({ refreshCart }) {
       });
   };
 
+  function shoot() { //print function for testing
+    var radios = document.getElementsByName('days');
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        alert(radios[i].value); // alert for testing
+        alert(deliveryTime);
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+  }
+
   if (!isLoggedIn)
     return <Login loginHandler={refreshCartPage} redirectTo="/cart" />;
   return (
@@ -159,7 +173,7 @@ function Cart({ refreshCart }) {
             <div className="container p-2">
               <b>Set delivery date/time:</b>
               <br />
-              <DatePicker
+              {/* <DatePicker
                 selected={deliveryTime}
                 onChange={(time) => {
                   setDeliveryTime(time);
@@ -170,7 +184,20 @@ function Cart({ refreshCart }) {
                 placeholderText="Set delivery date/time"
                 required={true}
                 minDate={Date.now()}
-              />
+              /> */}
+              <br />
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="days" value="saturday"/>
+                    Saturday (May 22)
+                </label>
+                <label class="radio">
+                  <input type="radio" name="days" value="sunday"/>
+                    Sunday (May 23)
+                </label>
+              </div>
+              <br />
+
               <br />
               <div className="pay-btn">
                 <StripeCheckout
@@ -179,7 +206,7 @@ function Cart({ refreshCart }) {
                   name="Samosabucket Purchase"
                   amount={total * 100}
                 >
-                  <button className="button is-primary is-large mt-2">
+                  <button className="button is-primary is-large mt-2" onClick={shoot}>
                     CONFIRM {`&`} PAY
                   </button>
                 </StripeCheckout>

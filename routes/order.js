@@ -117,17 +117,19 @@ router.post("/", auth, async (req, res) => {
       );
     })
     .then(async (result) => {
-      const order = new Order({
+      const user = await User.findById(mongoose.Types.ObjectId(req.user.id));
+      const orderSubmit = new Order({
         userId: mongoose.Types.ObjectId(req.user.id),
-        stripePayID: token.card.id,
+        // stripePayID: token.card.id,
+        venmo: user.venmo,
         status: "PAID",
         cart: cart,
         amount: amount,
         delivery_address: address,
         delivery_time: deliveryTime,
-        est_delivery_time: moment(deliveryTime).clone().add(30, "minutes"),
+        // est_delivery_time: moment(deliveryTime).clone().add(30, "minutes"),
       });
-      await order.save();
+      await orderSubmit.save();
       res.status(200).json({ message: "Order created." });
     })
     .catch((err) => {

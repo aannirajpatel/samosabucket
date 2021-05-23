@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 function AdminOrder({
-  stripePayID,
+  // stripePayID,
   status,
   cart,
   userId,
@@ -30,6 +30,7 @@ function AdminOrder({
   const [deliveryTime, setDeliveryTime] = useState(
     moment(est_delivery_time).utc().local().toDate()
   );
+  const [venmo, setVenmo] = useState("");
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
     OUT_FOR_DELIVERY: "Out for delivery",
@@ -60,6 +61,7 @@ function AdminOrder({
           return;
         }
         setCustomer(res.data);
+        setVenmo(res.data.venmo);
       })
       .catch((err) => {
         if (err.response) {
@@ -220,8 +222,11 @@ function AdminOrder({
               <b>Phone: </b>
               {customer?.phone}
               <br />
-              <b>Stripe Pay ID: </b>
+              {/* <b>Stripe Pay ID: </b>
               {stripePayID}
+              <br /> */}
+              <b>Venmo ID: </b>
+              {venmo}
               <br />
               <b>Delivery address</b>
               <br />

@@ -5,9 +5,12 @@ const OrderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  stripePayID: {
+  // stripePayID: {
+  //   type: String,
+  //   required: true,
+  // },
+  venmo: {
     type: String,
-    required: true,
   },
   status: {
     type: String, //PAID, PREPARING, ADMIN_CANCELLED, USER_CANCELLED, OUT_FOR_DELIVERY, DELIVERED
