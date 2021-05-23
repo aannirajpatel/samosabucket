@@ -1,6 +1,29 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+//added imports
+import { Button, Modal } from 'react-bootstrap';
+
+//start modal
+
+const Example = ({ show, onClose, onSave }) => (
+  <Modal show={show} onHide={onClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Modal heading</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={onClose}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={onSave}>
+        Save Changes
+      </Button>
+    </Modal.Footer>
+  </Modal>
+)
+
+
 function Item({
   imageUrl,
   name,
@@ -12,6 +35,8 @@ function Item({
 }) {
   const [qty, setQty] = useState(1);
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
+  const [showExample, setShowExample] = useState(false) //added
+
   const addToCart = () => {
     Axios.post(
       process.env.REACT_APP_BACKEND_API + "/cart/",
@@ -24,7 +49,9 @@ function Item({
       }
     )
       .then((res) => {
+        console.log("post called")
         refreshCart();
+        setShowExample(true);
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -52,6 +79,13 @@ function Item({
             <button className="button is-primary" onClick={addToCart}>
               ADD TO CART
             </button>
+
+            <Example //added
+                show={showExample}
+                onClose={() => setShowExample(false)}
+                onSave={() => setShowExample(false)}
+            />
+
           </div>
           <div className="control">
             <div className="select">

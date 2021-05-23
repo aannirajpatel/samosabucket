@@ -117,13 +117,23 @@ function Cart({ refreshCart }) {
     var radios = document.getElementsByName('days');
     for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
-        alert(radios[i].value); // alert for testing
-        alert(deliveryTime);
+        // await setDeliveryTime(radios[i].value);
         // only one radio can be logically checked, don't check the rest
         break;
       }
     }
   }
+
+  // const shoot = () => (
+  //   var radios = document.getElementsByName('days'); //react form needs a form element
+  //   for (var i = 0, length = radios.length; i < length; i++) {
+  //     if (radios[i].checked) {
+  //       await setDeliveryTime(radios[i].value);
+  //       // only one radio can be logically checked, don't check the rest
+  //       break;
+  //     }
+  //   }
+  // )
 
   if (!isLoggedIn)
     return <Login loginHandler={refreshCartPage} redirectTo="/cart" />;
@@ -185,8 +195,9 @@ function Cart({ refreshCart }) {
                 required={true}
                 minDate={Date.now()}
               /> */}
+              {/* RADIO BUTTON START */}
               <br />
-              <div class="control">
+              <div class="control"> /* add OnChange() */
                 <label class="radio">
                   <input type="radio" name="days" value="saturday"/>
                     Saturday (May 22)
@@ -197,7 +208,7 @@ function Cart({ refreshCart }) {
                 </label>
               </div>
               <br />
-
+              {/* RADIO BUTTON END */}
               <br />
               <div className="pay-btn">
                 <StripeCheckout
@@ -214,6 +225,7 @@ function Cart({ refreshCart }) {
             </div>
           )}
         </div>
+        
         <ToastContainer
           position="top-right"
           autoClose={2000}

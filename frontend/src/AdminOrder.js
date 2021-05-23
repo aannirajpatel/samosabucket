@@ -33,18 +33,18 @@ function AdminOrder({
   const [venmo, setVenmo] = useState("");
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
-    OUT_FOR_DELIVERY: "Out for delivery",
+    // OUT_FOR_DELIVERY: "Out for delivery", --> we didn't need this state
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by user",
     PAID: "Amount received",
-    PREPARING: "Preparing",
+    // PREPARING: "Preparing", --> we didn't need this state
   };
   const optionsData = [
     "ADMIN_CANCELLED",
-    "OUT_FOR_DELIVERY",
+    // "OUT_FOR_DELIVERY", --> we didn't need this state
     "DELIVERED",
     "PAID",
-    "PREPARING",
+    // "PREPARING", --> we didn't need this state
   ];
 
   useEffect(() => {
