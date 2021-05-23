@@ -125,7 +125,8 @@ router.post("/", auth, async (req, res) => {
         amount: amount,
         delivery_address: address,
         delivery_time: deliveryTime,
-        est_delivery_time: moment(deliveryTime).clone().add(30, "minutes"),
+
+        // est_delivery_time: moment(deliveryTime).clone().add(30, "minutes"),
       });
       await order.save();
       res.status(200).json({ message: "Order created." });

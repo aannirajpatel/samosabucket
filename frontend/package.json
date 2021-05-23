@@ -10,6 +10,7 @@
     "bulma": "^0.9.1",
     "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.6.0",
     "react-cloudinary-upload-widget": "^1.2.1",
     "react-datepicker": "^3.3.0",
     "react-dom": "^17.0.1",

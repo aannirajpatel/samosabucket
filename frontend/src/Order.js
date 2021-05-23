@@ -10,7 +10,7 @@ function Order({
   createdAt,
   _id,
   delivery_time,
-  est_delivery_time,
+  // est_delivery_time,
   refreshOrders,
   setError,
   ...misc
@@ -24,17 +24,17 @@ function Order({
     ["ADMIN_CANCELLED", "USER_CANCELLED"].findIndex((x) => x === status) > -1
   );
   const [hideCancel, setHideCancel] = useState(
-    ["OUT_FOR_DELIVERY", "DELIVERED"].findIndex((x) => x === status) > -1
+    [/*"OUT_FOR_DELIVERY", */"DELIVERED"].findIndex((x) => x === status) > -1 //--> we didn't need this state
   );
   const statusData = {
     ADMIN_CANCELLED:
       "Cancelled by SamosaBucket admin. Please contact us if this seems to be a mistake.",
-    OUT_FOR_DELIVERY: "Out for delivery",
+    // OUT_FOR_DELIVERY: "Out for delivery", --> we didn't need this state
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by you",
     PAID:
       "Amount received. A SamosaBucket staff will soon take up your order and start preparing it.",
-    PREPARING: "We are preparing (cooking) your order.",
+    // PREPARING: "We are preparing (cooking) your order.", --> we didn't need this state
   };
 
   useEffect(() => {
@@ -90,7 +90,8 @@ function Order({
           ) > -1
         );
         setHideCancel(
-          ["OUT_FOR_DELIVERY", "DELIVERED"].findIndex(
+          [/*"OUT_FOR_DELIVERY",*/ "DELIVERED"].findIndex( //--> we didn't need this state
+
             (x) => x === res.data.status
           ) > -1
         );
@@ -117,8 +118,8 @@ function Order({
           Requested delivery{" "}
           {moment.utc(delivery_time).local().format("DD-MMM-YY hh:mm a")}
           <br />
-          Estimated delivery{" "}
-          {moment.utc(est_delivery_time).local().format("DD-MMM-YY hh:mm a")}
+          {/* Estimated delivery{" "}
+          {moment.utc(est_delivery_time).local().format("DD-MMM-YY hh:mm a")} */}
         </p>
         <p className="subtitle is-6">
           Order created{" "}

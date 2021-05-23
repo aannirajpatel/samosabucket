@@ -43,6 +43,7 @@ function Me({ loginHandler }) {
   const phoneChange = (e) => {
     setPhone(e.target.value);
   };
+
   const nameChange = (e) => {
     setName(e.target.value);
   };
