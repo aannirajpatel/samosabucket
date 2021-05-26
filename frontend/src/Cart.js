@@ -43,6 +43,7 @@ function Cart({ refreshCart }) {
           (acc, ele) => acc + ele.price * ele.qty,
           0
         );
+        amount = +amount.toFixed(2);
         setOrder({
           cart: res.data.cart,
           amount: amount,
@@ -162,7 +163,11 @@ function Cart({ refreshCart }) {
           )}
         </div>
         <div className="column is-3 box p-4">
-          <div className="title is-1 mb-1">Total: ${total}</div>
+          <div className="title is-1 mb-1">Total: {total.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            })}
+          </div>
           <div className="container p-2">
             <b>Delivery address</b>
             <br />

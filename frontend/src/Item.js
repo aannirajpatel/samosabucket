@@ -123,7 +123,11 @@ function Item({
       </div>
       <div className="column is-9 pl-3 pt-0 p-2">
         <p className="title is-4">{name}</p>
-        <p className="subtitle is-5">${price}</p>
+        <p className="subtitle is-5">{price.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          })}
+        </p>
         <p className="subtitle is-6">{description}</p>
         <div className="field is-grouped">
           <div className="control">
