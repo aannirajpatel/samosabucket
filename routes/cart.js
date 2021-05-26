@@ -47,6 +47,9 @@ router.post("/", auth, async (req, res) => {
   try {
     const itemId = req.body.itemId;
     const qty = req.body.qty;
+    const dip = req.body.dip;
+    const spicy = req.body.spicy;
+    const vegetarian = req.body.vegetarian;
     if (itemId === null || qty === null) {
       throw { message: "Error adding to cart" };
     }
@@ -60,7 +63,7 @@ router.post("/", auth, async (req, res) => {
     if (item === undefined) {
       throw { message: "Item ID not found in the store" };
     }
-    user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price }];
+    user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, dip: dip, spicy: spicy, vegetarian, vegetarian }];
     //console.log(user.cart);
     await user.save();
     res.status(200).json(user.cart);

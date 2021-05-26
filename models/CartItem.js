@@ -12,6 +12,18 @@ const CartItem = mongoose.Schema({
     type: Number,
     default: 0.01,
   },
+  dip: {
+    type: String,
+    default: "Tamarind Sauce",
+  },
+  spicy: {
+    type: Boolean,
+    default: false,
+  },
+  vegetarian: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("cartitem", CartItem);
