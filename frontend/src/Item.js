@@ -56,6 +56,19 @@ function Item({
             Vegetarian option
           </label>
         </div>
+        <br></br>
+        Quantity
+        <div className="control">
+            <div className="select">
+              <select onChange={handleQty} value={qty}>
+                {[...Array(5)].map((x, index) => {
+                  return (
+                    <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
@@ -105,7 +118,7 @@ function Item({
     <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
       <div className="column is-3 p-1">
         <figure className="image is-square">
-          <img src={imageUrl} alt={"Photo of" + name} />
+          <img src={imageUrl} alt={"Photo of " + name} />
         </figure>
       </div>
       <div className="column is-9 pl-3 pt-0 p-2">
