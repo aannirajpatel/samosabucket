@@ -108,8 +108,7 @@ function Login({ loginHandler, redirectTo }) {
             {isError && (
               <div className="has-background-danger has-text-white my-2 p-2">
                 <p>
-                  Error logging you in - you might have missed or made a mistake
-                  on one or more fields on the log in form above.
+                  Error logging in with email or password. Text 919-904-5109 for any assistance. 
                 </p>
               </div>
             )}

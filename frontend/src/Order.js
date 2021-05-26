@@ -116,14 +116,14 @@ function Order({
           <br />
           <b>Amount:</b> ${amount}
           <br />
-          Requested delivery{" "}
-          {moment.utc(delivery_time).local().format("DD-MMM-YY hh:mm a")}
+          <b>Delivery Day:</b> {delivery_time}
+          {/* {moment.utc(delivery_time).local().format("DD-MMM-YY hh:mm a")} */}
           <br />
           {/* Estimated delivery{" "}
           {moment.utc(est_delivery_time).local().format("DD-MMM-YY hh:mm a")} */}
         </p>
         <p className="subtitle is-6">
-          Order created{" "}
+          <b>Order created{" "}</b>
           {moment(createdAt).format("ddd, MMM Do, YYYY \\at hh:mm A")}
         </p>
         <div className="field is-grouped">

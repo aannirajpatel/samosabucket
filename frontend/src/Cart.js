@@ -1,5 +1,5 @@
 import Axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import CartItem from "./CartItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,8 @@ import StripeCheckout from "react-stripe-checkout";
 import Login from "./Login";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
+
+import { Button, Form, Radio } from 'semantic-ui-react';
 
 import "react-datepicker/dist/react-datepicker.css";
 function Cart({ refreshCart }) {
@@ -16,8 +18,7 @@ function Cart({ refreshCart }) {
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   // const [deliveryTime, setDeliveryTime] = useState(new Date());
-  const [deliveryTime, setDeliveryTime] = useState("");
-
+  const [deliveryTime, setDeliveryTime] = useState("Saturday");
 
   useEffect(() => {
     if (error !== "")
@@ -94,10 +95,10 @@ function Cart({ refreshCart }) {
           withCredentials: true,
         });
         toast.success(
-          "Order successful 😎! Visit orders to see where the food at.",
+          "Order success!", 
           {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -195,18 +196,15 @@ function Cart({ refreshCart }) {
                 required={true}
                 minDate={Date.now()}
               /> */}
+
               {/* RADIO BUTTON START */}
               <br />
-              <div class="control"> /* add OnChange() */
-                <label class="radio">
-                  <input type="radio" name="days" value="saturday"/>
-                    Saturday (May 22)
-                </label>
-                <label class="radio">
-                  <input type="radio" name="days" value="sunday"/>
-                    Sunday (May 23)
-                </label>
-              </div>
+
+              <Form.Group inline>
+                <Form.Radio label="Saturday" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                <Form.Radio label="Sunday" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+              </Form.Group>
+
               <br />
               {/* RADIO BUTTON END */}
               <br />

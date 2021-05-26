@@ -439,7 +439,7 @@ function Me({ loginHandler }) {
 
                 <div className="field">
                   <label className="label" htmlFor="other" onChange={otherChange}>
-                  Allergies / Special Instructions
+                  Special Instructions / Allergies
                   </label>
                   <div className="control">
                     <input
