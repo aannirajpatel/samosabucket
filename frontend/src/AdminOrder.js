@@ -17,7 +17,7 @@ function AdminOrder({
   setError,
   delivery_address: address,
   delivery_time,
-  est_delivery_time,
+  //est_delivery_time,
   ...misc
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -27,9 +27,9 @@ function AdminOrder({
   const [cartData, setCartData] = useState([]);
   const [operationSelect, setOperationSelect] = useState(status);
   const [customer, setCustomer] = useState({ email: "", phone: "", name: "" });
-  const [deliveryTime, setDeliveryTime] = useState(
-    moment(est_delivery_time).utc().local().toDate()
-  );
+  // const [deliveryTime, setDeliveryTime] = useState(
+  //   moment(est_delivery_time).utc().local().toDate()
+  // );
   const [venmo, setVenmo] = useState("");
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
@@ -115,7 +115,7 @@ function AdminOrder({
       process.env.REACT_APP_BACKEND_API + "/adminorder/" + _id,
       {
         status: operationSelect,
-        est_delivery_time: deliveryTime,
+        // est_delivery_time: deliveryTime,
       },
       {
         withCredentials: true,
@@ -155,10 +155,11 @@ function AdminOrder({
           <br />
           <b>Status:</b> {status}
           <br />
-          <b>Requested delivery by: </b>
-          {moment(delivery_time).utc().local().format("hh:mm A, DD-MMM-YY")}
+          <b>Delivery Day:</b> {delivery_time}  
+          {/* {moment(delivery_time).utc().local().format("hh:mm A, DD-MMM-YY")} */}
+          
         </p>
-        <b>Estimated Delivery Time:</b>
+        {/* <b>Estimated Delivery Time:</b>
         <br />
         <DatePicker
           name="estDelivery"
@@ -172,8 +173,7 @@ function AdminOrder({
           placeholderText="Set est delivery date/time"
           required={true}
           minDate={Date.now()}
-        />
-        <br />
+        /> */}
         <b>Modify status:</b>
         <br />
         <select

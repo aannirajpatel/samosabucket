@@ -356,13 +356,14 @@ function Signup({ loginHandler, redirectTo }) {
 
                 <div className="field">
                   <label className="label" htmlFor="venmo" onChange={venmoChange}>
-                  Venmo ID (If applicable)
+                  Venmo ID
                   </label>
                   <div className="control">
                     <input
                       id="venmo"
                       name="venmo"
                       type="text"
+                      placeholder="Optional"
                       className="input "
                       required=""
                       value={venmo}
@@ -373,13 +374,14 @@ function Signup({ loginHandler, redirectTo }) {
 
                 <div className="field">
                   <label className="label" htmlFor="other" onChange={otherChange}>
-                  Allergies / Special Instructions (Optional)
+                  Special Instructions / Allergies
                   </label>
                   <div className="control">
                     <input
                       id="other"
                       name="other"
                       type="text"
+                      placeholder="Optional"
                       className="input "
                       required=""
                       value={other}
