@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 //added imports
 import { Button, Modal } from 'react-bootstrap';
-import 'semantic-ui-css/semantic.min.css'
+// import 'semantic-ui-css/semantic.min.css'
 import { Form, Radio } from 'semantic-ui-react';
 
 
