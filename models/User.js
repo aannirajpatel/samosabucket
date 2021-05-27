@@ -17,6 +17,12 @@ const UserSchema = mongoose.Schema({
     state: String,
     country: String,
   },
+  venmo: {
+    type: String,
+  },
+  other: {
+    type: String,
+  },
   password: {
     type: String,
     required: true,

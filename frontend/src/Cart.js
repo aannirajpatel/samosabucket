@@ -1,5 +1,5 @@
 import Axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import CartItem from "./CartItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,8 @@ import Login from "./Login";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
+import { Button, Form, Radio } from 'semantic-ui-react';
+
 import "react-datepicker/dist/react-datepicker.css";
 function Cart({ refreshCart }) {
   const [cartItems, setCartItems] = useState([]);
@@ -15,7 +17,8 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [deliveryTime, setDeliveryTime] = useState(new Date());
+  // const [deliveryTime, setDeliveryTime] = useState(new Date());
+  const [deliveryTime, setDeliveryTime] = useState("Saturday");
 
   useEffect(() => {
     if (error !== "")
@@ -40,6 +43,7 @@ function Cart({ refreshCart }) {
           (acc, ele) => acc + ele.price * ele.qty,
           0
         );
+        amount = +amount.toFixed(2);
         setOrder({
           cart: res.data.cart,
           amount: amount,
@@ -92,10 +96,10 @@ function Cart({ refreshCart }) {
           withCredentials: true,
         });
         toast.success(
-          "Order successful 😎! Visit orders to see where the food at.",
+          "Order success!", 
           {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -110,6 +114,28 @@ function Cart({ refreshCart }) {
           setError(err.response.data.message || "Error in payment.");
       });
   };
+
+  function shoot() { //print function for testing
+    var radios = document.getElementsByName('days');
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        // await setDeliveryTime(radios[i].value);
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+  }
+
+  // const shoot = () => (
+  //   var radios = document.getElementsByName('days'); //react form needs a form element
+  //   for (var i = 0, length = radios.length; i < length; i++) {
+  //     if (radios[i].checked) {
+  //       await setDeliveryTime(radios[i].value);
+  //       // only one radio can be logically checked, don't check the rest
+  //       break;
+  //     }
+  //   }
+  // )
 
   if (!isLoggedIn)
     return <Login loginHandler={refreshCartPage} redirectTo="/cart" />;
@@ -137,7 +163,11 @@ function Cart({ refreshCart }) {
           )}
         </div>
         <div className="column is-3 box p-4">
-          <div className="title is-1 mb-1">Total: ${total}</div>
+          <div className="title is-1 mb-1">Total: {total.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            })}
+          </div>
           <div className="container p-2">
             <b>Delivery address</b>
             <br />
@@ -159,7 +189,7 @@ function Cart({ refreshCart }) {
             <div className="container p-2">
               <b>Set delivery date/time:</b>
               <br />
-              <DatePicker
+              {/* <DatePicker
                 selected={deliveryTime}
                 onChange={(time) => {
                   setDeliveryTime(time);
@@ -170,7 +200,18 @@ function Cart({ refreshCart }) {
                 placeholderText="Set delivery date/time"
                 required={true}
                 minDate={Date.now()}
-              />
+              /> */}
+
+              {/* RADIO BUTTON START */}
+              <br />
+
+              <Form.Group inline>
+                <Form.Radio label="Saturday" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                <Form.Radio label="Sunday" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+              </Form.Group>
+
+              <br />
+              {/* RADIO BUTTON END */}
               <br />
               <div className="pay-btn">
                 <StripeCheckout
@@ -179,7 +220,7 @@ function Cart({ refreshCart }) {
                   name="Samosabucket Purchase"
                   amount={total * 100}
                 >
-                  <button className="button is-primary is-large mt-2">
+                  <button className="button is-primary is-large mt-2" onClick={shoot}>
                     CONFIRM {`&`} PAY
                   </button>
                 </StripeCheckout>
@@ -187,6 +228,7 @@ function Cart({ refreshCart }) {
             </div>
           )}
         </div>
+        
         <ToastContainer
           position="top-right"
           autoClose={2000}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../node_modules/bulma/css/bulma.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; //added bootstrap CSS
+// import 'semantic-ui-css/semantic.min.css'; //added semantic-ui CSS
 import "./";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
