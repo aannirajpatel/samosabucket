@@ -143,7 +143,7 @@ function Me({ loginHandler }) {
         setIsLoggedIn(true);
         toast.success("Update done!", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -162,7 +162,7 @@ function Me({ loginHandler }) {
           if (err.response.data.error) {
             toast.error("Error: " + err.response.data.error[0].msg, {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -173,7 +173,7 @@ function Me({ loginHandler }) {
           if (err.response.data.message) {
             toast.error("Error: " + err.response.data.message, {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -485,7 +485,7 @@ function Me({ loginHandler }) {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

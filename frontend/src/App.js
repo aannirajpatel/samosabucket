@@ -34,7 +34,7 @@ function App() {
         if (isLoggedIn === false) {
           toast.success("Login successful!", {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -47,7 +47,7 @@ function App() {
           if (isAdmin === false || isAdmin === "false") {
             toast.success("Welcome, admin!", {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -69,7 +69,7 @@ function App() {
       "Note: by using this website, you agree to our Cookie policy",
       {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -95,7 +95,7 @@ function App() {
       />
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

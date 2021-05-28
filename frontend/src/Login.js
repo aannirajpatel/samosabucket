@@ -43,7 +43,7 @@ function Login({ loginHandler, redirectTo }) {
           "Error: " + JSON.stringify(err.response.data?.errors[0]?.msg),
           {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -116,7 +116,7 @@ function Login({ loginHandler, redirectTo }) {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

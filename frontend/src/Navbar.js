@@ -15,7 +15,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .then((res) => {
         toast.warn("You have been logged out.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -27,7 +27,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .catch((e) =>
         toast.warn("Error logging out. Try clearing cookies.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -144,7 +144,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
