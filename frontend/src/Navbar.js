@@ -86,9 +86,9 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
             <FA name="credit-card" />
             &nbsp;Orders
           </Link>
-          <Link className="navbar-item button is-light mx-2 mt-2" to="/info">
+          <Link className="navbar-item button is-light mx-2 mt-2" to="/help">
             <FA name="info" />
-            &nbsp;{process.env.REACT_APP_INFO_TAB_NAME || "Info"}
+            &nbsp;{process.env.REACT_APP_HELP_TAB_NAME || "Help"}
           </Link>
 
           {isAdmin && (
