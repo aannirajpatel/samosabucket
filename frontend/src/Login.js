@@ -18,7 +18,8 @@ function Login({ loginHandler, redirectTo }) {
     setPassword(e.target.value);
   };
 
-  const loginSubmit = () => {
+  const loginSubmit = (e) => {
+    e.preventDefault()
     setIsLoading(true);
     Axios({
       method: "post",
@@ -60,72 +61,74 @@ function Login({ loginHandler, redirectTo }) {
 
   return (
     <div className="container">
-      <div className="columns is-centered is-vcentered">
-        <div className="column is-half">
-          <div className="card p-2">
-            <div className="title has-text-centered is-italic">Login</div>
-            <div className="field">
-              <label className="label">E-mail</label>
-              <p className="control">
-                <input
-                  className="input"
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={emailChange}
-                />
-              </p>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <p className="control">
-                <input
-                  className="input"
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={passwordChange}
-                />
-              </p>
-            </div>
-            <div className="field is-grouped is-grouped-right">
-              <p className="control">
-                <Link className="button is-info" to="/signup">
-                  NEW? CREATE AN ACCOUNT
-                </Link>
-              </p>
-              <p className="control">
-                <button
-                  className={
-                    "button is-primary " + (isLoading ? "is-loading" : "")
-                  }
-                  onClick={loginSubmit}
-                >
-                  LOGIN
-                </button>
-              </p>
-            </div>
-            {isError && (
-              <div className="has-background-danger has-text-white my-2 p-2">
-                <p>
-                  Error logging in with email or password. Text 919-904-5109 for any assistance. 
+      <form className='form' onSubmit={loginSubmit}>
+        <div className="columns is-centered is-vcentered">
+          <div className="column is-half">
+            <div className="card p-2">
+              <div className="title has-text-centered is-italic">Login</div>
+              <div className="field">
+                <label className="label">E-mail</label>
+                <p className="control">
+                  <input
+                    className="input"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={emailChange}
+                  />
                 </p>
               </div>
-            )}
+              <div className="field">
+                <label className="label">Password</label>
+                <p className="control">
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={passwordChange}
+                  />
+                </p>
+              </div>
+              <div className="field is-grouped is-grouped-right">
+                <p className="control">
+                  <Link className="button is-info" to="/signup">
+                    NEW? CREATE AN ACCOUNT
+                  </Link>
+                </p>
+                <p className="control">
+                  <button type = "submit"
+                    className={
+                      "button is-primary " + (isLoading ? "is-loading" : "")
+                    }
+                    onClick={loginSubmit}
+                  >
+                    LOGIN
+                  </button>
+                </p>
+              </div>
+              {isError && (
+                <div className="has-background-danger has-text-white my-2 p-2">
+                  <p>
+                    Error logging in with email or password. Text 919-904-5109 for any assistance. 
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </div>
+      </form>
     </div>
   );
 }

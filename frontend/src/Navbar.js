@@ -15,7 +15,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .then((res) => {
         toast.warn("You have been logged out.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -27,7 +27,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .catch((e) =>
         toast.warn("Error logging out. Try clearing cookies.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -86,9 +86,9 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
             <FA name="credit-card" />
             &nbsp;Orders
           </Link>
-          <Link className="navbar-item button is-light mx-2 mt-2" to="/info">
+          <Link className="navbar-item button is-light mx-2 mt-2" to="/help">
             <FA name="info" />
-            &nbsp;{process.env.REACT_APP_INFO_TAB_NAME || "Info"}
+            &nbsp;{process.env.REACT_APP_HELP_TAB_NAME || "Help"}
           </Link>
 
           {isAdmin && (
@@ -144,7 +144,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

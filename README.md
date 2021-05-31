@@ -23,7 +23,7 @@ The purpose of this project is to implement a fully functional online restaurant
    `REACT_APP_POSITIONSTACK_API`: The API URL for the Positionstack API that we used for geocoding.<br>
    `REACT_APP_POSITIONSTACK_API_KEY`: The API KEY for the Positionstack API.<br>
    `REACT_APP_STRIPE_PUBLIC_KEY`: Public key for the Stripe Payments API.<br>
-   `REACT_APP_INFO_TAB_NAME`: Set to any string to show up as the info/help/support tab name.<br>
+   `REACT_APP_HELP_TAB_NAME`: Set to any string to show up as the info/help/support tab name.<br>
    `STRIPE_SK`: Secret key for the Stripe Payments API.<br>
    `ENFORCE_HTTPS`: [Deprecated], This was only useful for localhost https enforcement. If you are using previous versions, please set to FALSE when deploying to Heroku and TRUE only if you wish to enforce HTTPS on localhost.<br>
 

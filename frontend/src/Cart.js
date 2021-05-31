@@ -24,7 +24,7 @@ function Cart({ refreshCart }) {
     if (error !== "")
       toast.error("Error: " + error, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -54,7 +54,7 @@ function Cart({ refreshCart }) {
         if (!suppressToast) {
           toast.success("Cart updated!", {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -141,9 +141,11 @@ function Cart({ refreshCart }) {
     return <Login loginHandler={refreshCartPage} redirectTo="/cart" />;
   return (
     <>
+      <br></br>
       <div className="title is-1 has-text-centered columns is-centered mb-5">
         <span className="is-italic column is-4">Review your order</span>
       </div>
+      <br></br>
       <div className="columns is-centered is-desktop">
         <div className="column is-half">
           {cartItems.map((x) => {
@@ -206,8 +208,8 @@ function Cart({ refreshCart }) {
               <br />
 
               <Form.Group inline>
-                <Form.Radio label="Saturday" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
-                <Form.Radio label="Sunday" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+                <Form.Radio label="Saturday (June 5th)" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                <Form.Radio label="Sunday (June 6th)" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
               </Form.Group>
 
               <br />
@@ -231,7 +233,7 @@ function Cart({ refreshCart }) {
         
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

@@ -67,7 +67,7 @@ function AdminOrder({
         if (err.response) {
           toast.error("Error: " + err.response.data.message, {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -124,7 +124,7 @@ function AdminOrder({
       .then((res) => {
         toast.success("Status updated", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -274,7 +274,7 @@ function AdminOrder({
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
