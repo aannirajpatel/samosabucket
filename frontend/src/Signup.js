@@ -163,7 +163,7 @@ function Signup({ loginHandler, redirectTo }) {
       <div className="columns is-centered is-vcentered">
         <div className="column is-4">
           <div className="card p-2">
-            <div className="title has-text-centered is-italic">Sign Up</div>
+            <div className="title has-text-centered">👋&nbsp;Welcome!</div>
             <form className="form-horizontal">
               <fieldset>
                 <legend></legend>
