@@ -208,8 +208,8 @@ function Cart({ refreshCart }) {
               <br />
 
               <Form.Group inline>
-                <Form.Radio label="Saturday" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
-                <Form.Radio label="Sunday" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+                <Form.Radio label="Saturday (June 5th)" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                <Form.Radio label="Sunday (June 6th)" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
               </Form.Group>
 
               <br />

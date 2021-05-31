@@ -29,12 +29,12 @@ function Order({
   );
   const statusData = {
     ADMIN_CANCELLED:
-      "Cancelled by SamosaBucket admin. Please contact us if this seems to be a mistake.",
+      "Order cancelled by a Samosabucket team member. Text 919-904-5109 for any concerns",
     // OUT_FOR_DELIVERY: "Out for delivery", --> we didn't need this state
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by you",
     PAID:
-      "Amount received. A SamosaBucket staff will soon take up your order and start preparing it.",
+      "Received order. We will text for a delivery time at least 6 hours in advance",
     // PREPARING: "We are preparing (cooking) your order.", --> we didn't need this state
   };
 
