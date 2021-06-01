@@ -65,7 +65,7 @@ function Login({ loginHandler, redirectTo }) {
         <div className="columns is-centered is-vcentered">
           <div className="column is-half">
             <div className="card p-2">
-              <div className="title has-text-centered is-italic">Login</div>
+              <div className="title has-text-centered">🍟 Login</div>
               <div className="field">
                 <label className="label">E-mail</label>
                 <p className="control">

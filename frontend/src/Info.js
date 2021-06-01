@@ -4,7 +4,7 @@ function Info() {
     <div className="container">
       <div className="columns is-centered is-vcentered">
         <div className="column is-three-quarters box">
-          <div className="title has-text-centered is-italic">Help</div>
+          <div className="title is-3 has-text-centered">Help / Contact</div>
           <div className="subtitle">How to order:</div>
           <div>
             <p>
@@ -20,10 +20,11 @@ function Info() {
           <div>
             <p>
               Enter <b> 4242 4242 4242 4242 </b> for the credit card number,  <b>any three digit CVC code</b>, and <b>any future date</b> for the date. 
-              These are imaaginary credit card details used for testing as our web app is in the beta version and does not handle real credit information.
+              These are imaginary credit card details used for testing as our web app is in the beta version and does not handle real credit information.
             </p>
           </div>
-          <div className="subtitle">Questions? We're here for you.</div>
+          <hr></hr>
+          <div className="subtitle is-3 has-text-centered">Got questions? We're here for you.</div>
           <p>
             Email: <a href="mailto:example@gmail.com">shasj@live.unc.edu</a>
           </p>
@@ -38,13 +39,15 @@ function Info() {
           </p> */}
           <br></br>
           <br></br>
-          <small>
-            Made with ❤️ by the Samosabucket team using the open source project "Samosabucket"{" "}
-            <a href="https://github.com/aannirajpatel/samosabucket">
-              Samosabucket
-            </a>{" "}
-            by <a href="https://aanpatel.tech">Aan Patel</a>
-          </small>
+          <div className="has-text-centered">
+            <small>
+              Made with ❤️ using the open source project {" "}
+              <a href="https://github.com/aannirajpatel/samosabucket">
+                Samosabucket
+              </a>{" "}
+              by <a href="https://aanpatel.tech">Aan Patel</a>
+            </small>
+          </div>
         </div>
       </div>
     </div>
