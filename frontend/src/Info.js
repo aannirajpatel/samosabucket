@@ -4,31 +4,53 @@ function Info() {
     <div className="container">
       <div className="columns is-centered is-vcentered">
         <div className="column is-three-quarters box">
+          <br></br>
           <div className="subtitle is-3 has-text-centered">Help / Contact</div>
-          <div className="subtitle">Ordering:</div>
-          <div>
-            <p>
-              <ol>
-                <li>Add items to cart</li>
-                <li>Go to "Cart" and select delivery day</li>
-                <li>To add special instructions select "change address"</li>
-                <li>Click on CONFIRM {"&"} PAY to complete order</li>
-              </ol>
-            </p>
+          <br></br>
+
+          <div class="columns">
+            <div class="column">
+              <div className="subtitle has-text-centered">
+                Ordering:
+              </div>
+              <p>
+                <ol>
+                  <li>Add items to cart</li>
+                  <li>Go to "Cart" and select delivery day</li>
+                  <li>To add special instructions select "change address"</li>
+                  <li>Click on CONFIRM {"&"} PAY to complete order</li>
+                </ol>
+              </p>
+            </div>
+            <div class="column">
+              <div className="subtitle has-text-centered">
+                Payment:
+              </div>
+              <p>
+                <ol>
+                  <li><b>Email:</b>&nbsp; test@gmail.com</li>
+                  <li><b>Card Number:</b>&nbsp; 4242 4242 4242 4242</li>
+                  <li><b>Date:</b>&nbsp; 12 / 2021</li>
+                  <li><b>Security Code:</b>&nbsp; 777</li>
+                </ol>
+              </p>
+            </div>
           </div>
-          <div className="subtitle">Payment:</div>
-          <div>
+
+          <br></br>
+          <div class="has-text-centered">
             <p>
-              Enter <b> 4242 4242 4242 4242 </b> for the credit card number,  <b>any three digit CVC code</b>, and <b>any future date</b> for the date. 
-              These are imaginary credit card details used for testing as our web app is in the beta version and does not handle real credit information.
+              This web app is in <b>beta version</b> so please use payment method above to complete order. <b>No fees will be charged.</b>
             </p>
           </div>
           <br></br>
           <hr></hr>
           <br></br>
+          <br></br>
           <div className="subtitle is-3 has-text-centered">Got questions? We're here for you.</div>
           <br></br>
-          <div class="columns">
+          <br></br>
+          <div class="columns has-text-centered">
             <div class="column">
               <p>
                 Email: <a href="mailto:example@gmail.com">shasj@live.unc.edu</a>
@@ -40,7 +62,7 @@ function Info() {
               </p>
             </div>
           </div>
-          <div class="columns">
+          {/* <div class="columns">
             <div class="column">
               <a href="https://www.google.com" target="_blank">
                 About Us - Coming Soon
@@ -63,7 +85,7 @@ function Info() {
                 Private Policy - Coming Soon
               </a>
             </div>
-          </div>
+          </div> */}
           <br></br>
           <br></br>
           <div className="has-text-centered">
