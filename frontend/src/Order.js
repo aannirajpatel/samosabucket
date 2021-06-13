@@ -34,7 +34,7 @@ function Order({
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by you",
     PAID:
-      "Received order. We will text for a delivery time at least 6 hours in advance",
+      "Order received. We will text for a delivery time at least 12 hours in advance",
     // PREPARING: "We are preparing (cooking) your order.", --> we didn't need this state
   };
 

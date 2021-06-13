@@ -55,3 +55,7 @@ code {
   color: white;
   z-index: 99;
 }
+
+a, u { /* to remove the underlines in links */
+  text-decoration: none;
+}
