@@ -159,8 +159,7 @@ function Cart({ refreshCart }) {
           })}
           {cartItems?.length === 0 && (
             <div className="title is-4 box">
-              Grab a few snacks, and then be here, we'll get you a bill and the
-              food will be on its way!
+              Cart is currently empty.
             </div>
           )}
         </div>
@@ -185,7 +184,7 @@ function Cart({ refreshCart }) {
             {order?.address?.zip}
             <br />
             <hr className="m-0" />
-            <Link to="/me">Change address</Link>
+            <Link to="/me">Change address / special instructions</Link>
           </div>
           {total > 0 && (
             <div className="container p-2">
