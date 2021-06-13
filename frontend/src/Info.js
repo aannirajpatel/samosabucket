@@ -24,7 +24,7 @@ function Info() {
             </div>
             <div class="column">
               <div className="subtitle has-text-centered">
-                Payment:
+                Test Payment:
               </div>
               <p>
                 <ol>
@@ -40,7 +40,7 @@ function Info() {
           <br></br>
           <div class="has-text-centered">
             <p>
-              This web app is in <b>beta version</b> so please use payment method above to complete order. <b>No fees will be charged.</b>
+              This web app is in <b>beta version</b> so please use payment credentials above to complete order. <b>No fees will be charged.</b>
             </p>
           </div>
           <br></br>
