@@ -81,8 +81,13 @@ function Item({
     </Modal>
   )
 
-  const displayModal = () => {
-    setShowModal(true);
+  const displayModal = () => { //this is where we choose to open modal or not
+    if (_id == "60bcd66c41057300174864c0") {
+      addToCart();
+    } else {
+      setShowModal(true);
+    }
+    // addToCart();
   }
 
   const addToCart = () => {
@@ -100,7 +105,8 @@ function Item({
       }
     )
       .then((res) => {
-        console.log("post called")
+        console.log(_id)
+        console.log(typeof _id)
         refreshCart();
         setShowModal(false);
       })

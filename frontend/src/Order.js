@@ -159,6 +159,9 @@ function Order({
                   <th>Price</th>
                   <th>Qty</th>
                   <th>Total</th>
+                  <th>Dip</th>
+                  <th>Spicy</th>
+                  <th>Vegetarian</th>
                 </tr>
               </thead>
               <tbody>
