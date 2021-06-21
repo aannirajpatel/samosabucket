@@ -188,7 +188,7 @@ function Cart({ refreshCart }) {
           </div>
           {total > 0 && (
             <div className="container p-2">
-              <b>Set delivery date/time:</b>
+              <b>Set delivery day:</b>
               <br />
               {/* <DatePicker
                 selected={deliveryTime}
@@ -207,13 +207,14 @@ function Cart({ refreshCart }) {
               <br />
 
               <Form.Group inline>
-                <Form.Radio label="Saturday (June 5th)" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
-                <Form.Radio label="Sunday (June 6th)" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+                <Form.Radio label="Saturday, June 5" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                <Form.Radio label="Sunday, June 6" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
               </Form.Group>
 
               <br />
               {/* RADIO BUTTON END */}
-              <br />
+              <hr className="m-0" />
+              <p style={{ color: '#c2252d' }}>We will text a delivery time at least 12 hours in advance</p>
               <div className="pay-btn">
                 <StripeCheckout
                   stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
