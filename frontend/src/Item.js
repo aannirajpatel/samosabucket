@@ -19,8 +19,10 @@ function Item({
   const [qty, setQty] = useState(1);
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   const [showModal, setShowModal] = useState(false) //added
-  //start modal
+  const [showModal1, setShowModal1] = useState(false) //added
+  //Samosabucket Start
   const [dip, setDip] = useState("Tamarind Sauce");
+
   const [isSpicy, setSpicy] = useState(false);
   const spicyChange = () => {
     setSpicy(!isSpicy);
@@ -29,6 +31,11 @@ function Item({
   const vegetarianChange = () => {
     setVegetarian(!isVegetarian);
   };
+  //Samosabucket End
+
+  //Sample Start
+  const [meat, setMeat] = useState("Lamb");
+  //Sample End
 
   const ItemModal = ({ show, onClose, onSave }) => (
     <Modal show={show} onHide={onClose}>
@@ -81,13 +88,65 @@ function Item({
     </Modal>
   )
 
-  const displayModal = () => { //this is where we choose to open modal or not
-    if (_id == "60bcd66c41057300174864c0") {
-      addToCart();
-    } else {
+  const Doener = ({ show, onClose, onSave }) => (
+    <Modal show={show} onHide={onClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modify Order</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        Choose Meat
+        <Form.Group inline>
+                <Form.Radio label="Lamb" checked={meat === 'Lamb'} value="Lamb" onClick={() => setMeat('Lamb')} />
+                <Form.Radio label="Vegan" checked={meat === 'Vegan'} value="Vegan" onClick={() => setMeat('Vegan')} />
+        </Form.Group>
+        <br></br>
+        Additional options
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={isSpicy} onChange={spicyChange}/>
+          <label class="form-check-label" for="flexCheckDefault">
+            Make it spicy
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isVegetarian} onChange={vegetarianChange}/>
+          <label class="form-check-label" for="flexCheckChecked">
+            Vegetarian option
+          </label>
+        </div>
+        <br></br>
+        Quantity
+        <div className="control">
+            <div className="select">
+              <select onChange={handleQty} value={qty}>
+                {[...Array(5)].map((x, index) => {
+                  return (
+                    <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={addToCart}>
+          Add To Cart
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+
+  const displayModal = () => { 
+    if (_id == "60bce07041057300174864c1") { //showModal1
       setShowModal(true);
+      return;
+    } else if (_id == "60bce0c141057300174864c2") { //showModal2
+      setShowModal1(true);
+      return;
     }
-    // addToCart();
+    addToCart();
   }
 
   const addToCart = () => {
@@ -96,19 +155,23 @@ function Item({
       {
         itemId: _id,
         qty: qty,
+        //samosabucket
         dip: dip,
         spicy: isSpicy,
         vegetarian: isVegetarian,
+        //samosabucket
+        //sample
+        meat: meat,
+        //sample
       },
       {
         withCredentials: true,
       }
     )
       .then((res) => {
-        console.log(_id)
-        console.log(typeof _id)
         refreshCart();
         setShowModal(false);
+        setShowModal1(false);
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -141,10 +204,16 @@ function Item({
               ADD TO CART
             </button>
 
-            <ItemModal //added
+            <ItemModal
                 show={showModal}
                 onClose={() => setShowModal(false)}
                 onSave={() => setShowModal(false)}
+            />
+
+            <Doener
+                show={showModal1}
+                onClose={() => setShowModal1(false)}
+                onSave={() => setShowModal1(false)}
             />
 
           </div>

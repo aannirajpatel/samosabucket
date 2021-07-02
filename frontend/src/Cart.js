@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import StripeCheckout from "react-stripe-checkout";
 import Login from "./Login";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
 
 import { Button, Form, Radio } from 'semantic-ui-react';
 
@@ -17,7 +16,6 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // const [deliveryTime, setDeliveryTime] = useState(new Date());
   const [deliveryTime, setDeliveryTime] = useState("Saturday");
 
   useEffect(() => {
