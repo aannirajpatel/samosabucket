@@ -6,23 +6,25 @@ const CartItem = mongoose.Schema({
   },
   qty: {
     type: Number,
-    default: 1,
   },
   price: {
     type: Number,
-    default: 0.01,
   },
   dip: {
     type: String,
-    default: "Tamarind Sauce",
+  },
+  meat: {
+    type: String,
   },
   spicy: {
     type: Boolean,
-    default: false,
   },
   vegetarian: {
     type: Boolean,
-    default: false,
+    // default: false,
+  },
+  item_name: {
+    type: String,
   },
 });
 

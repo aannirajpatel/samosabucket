@@ -5,6 +5,9 @@ const OrderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  name: { //added
+    type: String,
+  },
   // stripePayID: {
   //   type: String,
   //   required: true,
@@ -31,10 +34,6 @@ const OrderSchema = mongoose.Schema({
     type: String,
     default: "saturday",
   },
-  // est_delivery_time: {
-  //   type: Date,
-  //   default: Date.now(),
-  // },
   cart: [CartItem],
   amount: {
     type: Number,

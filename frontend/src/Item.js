@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 //added imports
 import { Button, Modal } from 'react-bootstrap';
 // import 'semantic-ui-css/semantic.min.css'
-import { Form, Radio } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 
 function Item({
@@ -16,19 +16,26 @@ function Item({
   refreshCart,
   ...misc
 }) {
-  const [qty, setQty] = useState(1);
+  let qty = 1;
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   const [showModal, setShowModal] = useState(false) //added
-  //start modal
-  const [dip, setDip] = useState("Tamarind Sauce");
-  const [isSpicy, setSpicy] = useState(false);
+  const [showModal1, setShowModal1] = useState(false) //added
+  //Samosabucket Start
+  let dip = "Tamarind Sauce";
+
+  let isSpicy = false;
   const spicyChange = () => {
-    setSpicy(!isSpicy);
+    isSpicy = !isSpicy;
   };
-  const [isVegetarian, setVegetarian] = useState(false);
+  let isVegetarian = false;
   const vegetarianChange = () => {
-    setVegetarian(!isVegetarian);
+    isVegetarian = !isVegetarian;
   };
+  //Samosabucket End
+
+  //Sample Start
+  const [meat, setMeat] = useState("Lamb");
+  //Sample End
 
   const ItemModal = ({ show, onClose, onSave }) => (
     <Modal show={show} onHide={onClose}>
@@ -37,21 +44,21 @@ function Item({
       </Modal.Header>
       <Modal.Body>
         Choose Dip
-        <Form.Group inline>
-                <Form.Radio label="Tamarind Sauce" checked={dip === 'Tamarind Sauce'} value="Tamarind Sauce" onClick={() => setDip('Tamarind Sauce')} />
-                <Form.Radio label="Creamy Chilli" checked={dip === 'Creamy Chilli'} value="Creamy Chilli" onClick={() => setDip('Creamy Chilli')} />
-                <Form.Radio label="Both" checked={dip === 'Both'} value="Both" onClick={() => setDip('Both')} />
-        </Form.Group>
+        <div>
+          <input type="radio" value="Tamarind Sauce" name="Choose Dip" defaultChecked onClick={() => dip = 'Tamarind Sauce'} /> Tamarind Sauce<br />
+          <input type="radio" value="Creamy Chilli" name="Choose Dip" onClick={() => dip = 'Creamy Chilli'} /> Creamy Chilli<br />
+          <input type="radio" value="Both" name="Choose Dip" onClick={() => dip = 'Both'} /> Both<br />
+        </div>
         <br></br>
         Additional options
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={isSpicy} onChange={spicyChange}/>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={spicyChange} />
           <label class="form-check-label" for="flexCheckDefault">
             Make it spicy
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isVegetarian} onChange={vegetarianChange}/>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={vegetarianChange} />
           <label class="form-check-label" for="flexCheckChecked">
             Vegetarian option
           </label>
@@ -59,16 +66,16 @@ function Item({
         <br></br>
         Quantity
         <div className="control">
-            <div className="select">
-              <select onChange={handleQty} value={qty}>
-                {[...Array(5)].map((x, index) => {
-                  return (
-                    <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
-                  );
-                })}
-              </select>
-            </div>
+          <div className="select">
+            <select onChange={handleQty}>
+              {[...Array(5)].map((x, index) => {
+                return (
+                  <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
+                );
+              })}
+            </select>
           </div>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
@@ -81,13 +88,65 @@ function Item({
     </Modal>
   )
 
-  const displayModal = () => { //this is where we choose to open modal or not
-    if (_id == "60bcd66c41057300174864c0") {
-      addToCart();
-    } else {
+  const Doener = ({ show, onClose, onSave }) => (
+    <Modal show={show} onHide={onClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modify Order</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        Choose Meat
+        <Form.Group inline>
+          <Form.Radio label="Lamb" checked={meat === 'Lamb'} value="Lamb" onClick={() => setMeat('Lamb')} />
+          <Form.Radio label="Vegan" checked={meat === 'Vegan'} value="Vegan" onClick={() => setMeat('Vegan')} />
+        </Form.Group>
+        <br></br>
+        Additional options
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={isSpicy} onChange={spicyChange} />
+          <label class="form-check-label" for="flexCheckDefault">
+            Make it spicy
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isVegetarian} onChange={vegetarianChange} />
+          <label class="form-check-label" for="flexCheckChecked">
+            Vegetarian option
+          </label>
+        </div>
+        <br></br>
+        Quantity
+        <div className="control">
+          <div className="select">
+            <select onChange={handleQty} value={qty}>
+              {[...Array(5)].map((x, index) => {
+                return (
+                  <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={addToCart}>
+          Add To Cart
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  )
+
+  const displayModal = () => {
+    if (_id === "60bce07041057300174864c1") { //showModal1
       setShowModal(true);
+      return;
+    } else if (_id === "60bce0c141057300174864c2") { //showModal2
+      setShowModal1(true);
+      return;
     }
-    // addToCart();
+    addToCart();
   }
 
   const addToCart = () => {
@@ -96,19 +155,23 @@ function Item({
       {
         itemId: _id,
         qty: qty,
+        //samosabucket
         dip: dip,
         spicy: isSpicy,
         vegetarian: isVegetarian,
+        //samosabucket
+        //sample
+        meat: meat,
+        //sample
       },
       {
         withCredentials: true,
       }
     )
       .then((res) => {
-        console.log(_id)
-        console.log(typeof _id)
         refreshCart();
         setShowModal(false);
+        setShowModal1(false);
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -117,7 +180,7 @@ function Item({
       });
   };
   const handleQty = (e) => {
-    setQty(e.target.value);
+    qty = e.target.value;
   };
   if (!isLoggedIn) return <Redirect to="/login" />;
   return (
@@ -132,7 +195,7 @@ function Item({
         <p className="subtitle is-5">{price.toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD',
-          })}
+        })}
         </p>
         <p className="subtitle is-6">{description}</p>
         <div className="field is-grouped">
@@ -141,10 +204,16 @@ function Item({
               ADD TO CART
             </button>
 
-            <ItemModal //added
-                show={showModal}
-                onClose={() => setShowModal(false)}
-                onSave={() => setShowModal(false)}
+            <ItemModal
+              show={showModal}
+              onClose={() => setShowModal(false)}
+              onSave={() => setShowModal(false)}
+            />
+
+            <Doener
+              show={showModal1}
+              onClose={() => setShowModal1(false)}
+              onSave={() => setShowModal1(false)}
             />
 
           </div>
