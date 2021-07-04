@@ -65,7 +65,7 @@ router.post("/", auth, async (req, res) => {
       throw { message: "Item ID not found in the store" };
     }
 
-    if (itemId == "60bce07041057300174864c1") { //cesar salad
+    if (itemId == "60bce07041057300174864c1") { //cesar saladd
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, dip: dip, spicy: spicy, vegetarian: vegetarian, item_name: item.name}];
     } else if (itemId == "60bce0c141057300174864c2") { //kebap
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, meat: meat, spicy: spicy, item_name: item.name}]; 
