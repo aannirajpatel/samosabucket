@@ -113,7 +113,7 @@ function Cart({ refreshCart }) {
       });
   };
 
-  const displayDate = () => { 
+  const displayDate = () => { // not if statement
     // if (_id == "60bce07041057300174864c1") { //showModal1
     //   console.log("salad");
     // } else if (_id == "60bce0c141057300174864c2") { //showModal2
