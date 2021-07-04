@@ -114,11 +114,11 @@ function Cart({ refreshCart }) {
   };
 
   const displayDate = () => { 
-    if (_id == "60bce07041057300174864c1") { //showModal1
-      console.log("salad");
-    } else if (_id == "60bce0c141057300174864c2") { //showModal2
-      console.log("kebap");
-    }
+    // if (_id == "60bce07041057300174864c1") { //showModal1
+    //   console.log("salad");
+    // } else if (_id == "60bce0c141057300174864c2") { //showModal2
+    //   console.log("kebap");
+    // }
   }
 
   if (!isLoggedIn)
