@@ -107,12 +107,6 @@ function Item({
             Make it spicy
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isVegetarian} onChange={vegetarianChange}/>
-          <label class="form-check-label" for="flexCheckChecked">
-            Vegetarian option
-          </label>
-        </div>
         <br></br>
         Quantity
         <div className="control">

@@ -113,27 +113,13 @@ function Cart({ refreshCart }) {
       });
   };
 
-  function shoot() { //print function for testing
-    var radios = document.getElementsByName('days');
-    for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-        // await setDeliveryTime(radios[i].value);
-        // only one radio can be logically checked, don't check the rest
-        break;
-      }
+  const displayDate = () => { 
+    if (_id == "60bce07041057300174864c1") { //showModal1
+      console.log("salad");
+    } else if (_id == "60bce0c141057300174864c2") { //showModal2
+      console.log("kebap");
     }
   }
-
-  // const shoot = () => (
-  //   var radios = document.getElementsByName('days'); //react form needs a form element
-  //   for (var i = 0, length = radios.length; i < length; i++) {
-  //     if (radios[i].checked) {
-  //       await setDeliveryTime(radios[i].value);
-  //       // only one radio can be logically checked, don't check the rest
-  //       break;
-  //     }
-  //   }
-  // )
 
   if (!isLoggedIn)
     return <Login loginHandler={refreshCartPage} redirectTo="/cart" />;
@@ -188,20 +174,6 @@ function Cart({ refreshCart }) {
             <div className="container p-2">
               <b>Set delivery day:</b>
               <br />
-              {/* <DatePicker
-                selected={deliveryTime}
-                onChange={(time) => {
-                  setDeliveryTime(time);
-                }}
-                showTimeSelect
-                dateFormat="Pp"
-                className="input my-2"
-                placeholderText="Set delivery date/time"
-                required={true}
-                minDate={Date.now()}
-              /> */}
-
-              {/* RADIO BUTTON START */}
               <br />
 
               <Form.Group inline>
@@ -210,7 +182,6 @@ function Cart({ refreshCart }) {
               </Form.Group>
 
               <br />
-              {/* RADIO BUTTON END */}
               <hr className="m-0" />
               <p style={{ color: '#c2252d' }}>We will text a delivery time at least 12 hours in advance</p>
               <div className="pay-btn">
@@ -220,7 +191,7 @@ function Cart({ refreshCart }) {
                   name="Samosabucket Purchase"
                   amount={total * 100}
                 >
-                  <button className="button is-primary is-large mt-2" onClick={shoot}>
+                  <button className="button is-primary is-large mt-2" onClick={displayDate}>
                     CONFIRM {`&`} PAY
                   </button>
                 </StripeCheckout>
