@@ -127,7 +127,7 @@ router.post("/", auth, async (req, res) => {
         amount: amount,
         delivery_address: address,
         delivery_time: deliveryTime,
-        name: user.name, //added
+        name: user.name, //addedd
       });
       await orderSubmit.save();
       res.status(200).json({ message: "Order created." });

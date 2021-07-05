@@ -49,7 +49,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
     >
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <img src={logo} width="160" height="28" alt="Samosabucket Logo" />
+          <img src={logo} width="180" height="20" alt="CloudEats.app Logo" />
         </Link>
 
         <span
