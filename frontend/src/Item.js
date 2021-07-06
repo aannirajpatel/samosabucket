@@ -18,9 +18,8 @@ function Item({
 }) {
   let qty = 1;
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
-  const [showModal, setShowModal] = useState(false) //added
-  const [showModal1, setShowModal1] = useState(false) //added
-  //Samosabucket Start
+  const [showModal, setShowModal] = useState(false)   //samosabucket - momo dumplings
+  //Samosabucket - momo dumplings
   let dip = "Tamarind Sauce";
 
   let isSpicy = false;
@@ -31,12 +30,9 @@ function Item({
   const vegetarianChange = () => {
     isVegetarian = !isVegetarian;
   };
-  //Samosabucket End
+  //Samosabucket - momo dumplings
 
-  //Sample Start
-  const [meat, setMeat] = useState("Lamb");
-  //Sample End
-
+  //samosabucket - momo dumplings
   const ItemModal = ({ show, onClose, onSave }) => (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
@@ -45,8 +41,8 @@ function Item({
       <Modal.Body>
         Choose Dip
         <div>
-          <input type="radio" value="Tamarind Sauce" name="Choose Dip" defaultChecked onClick={() => dip = 'Tamarind Sauce'} /> Tamarind Sauce<br />
-          <input type="radio" value="Creamy Chilli" name="Choose Dip" onClick={() => dip = 'Creamy Chilli'} /> Creamy Chilli<br />
+          <input type="radio" value="Tangy Tomato" name="Choose Dip" defaultChecked onClick={() => dip = 'Tangy Tomato'} /> Tangy Tomato<br />
+          <input type="radio" value="Dumpling Sauce" name="Choose Dip" onClick={() => dip = 'Dumpling Sauce'} /> Dumpling Sauce<br />
           <input type="radio" value="Both" name="Choose Dip" onClick={() => dip = 'Both'} /> Both<br />
         </div>
         <br></br>
@@ -60,7 +56,7 @@ function Item({
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={vegetarianChange} />
           <label class="form-check-label" for="flexCheckChecked">
-            Vegetarian option
+            Vegan option
           </label>
         </div>
         <br></br>
@@ -87,63 +83,14 @@ function Item({
       </Modal.Footer>
     </Modal>
   )
-
-  const Doener = ({ show, onClose, onSave }) => (
-    <Modal show={show} onHide={onClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modify Order</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        Choose Meat
-        <Form.Group inline>
-          <Form.Radio label="Lamb" checked={meat === 'Lamb'} value="Lamb" onClick={() => setMeat('Lamb')} />
-          <Form.Radio label="Vegan" checked={meat === 'Vegan'} value="Vegan" onClick={() => setMeat('Vegan')} />
-        </Form.Group>
-        <br></br>
-        Additional options
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={isSpicy} onChange={spicyChange} />
-          <label class="form-check-label" for="flexCheckDefault">
-            Make it spicy
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isVegetarian} onChange={vegetarianChange} />
-          <label class="form-check-label" for="flexCheckChecked">
-            Vegetarian option
-          </label>
-        </div>
-        <br></br>
-        Quantity
-        <div className="control">
-          <div className="select">
-            <select onChange={handleQty} value={qty}>
-              {[...Array(5)].map((x, index) => {
-                return (
-                  <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
-                );
-              })}
-            </select>
-          </div>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={addToCart}>
-          Add To Cart
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  )
+  //samosabucket - momo dumplings
 
   const displayModal = () => {
-    if (_id === "60bce07041057300174864c1") { //showModal1
+    if (_id === "60e3a111557dc20017253d84") {  //samosabucket - momo dumplings
       setShowModal(true);
       return;
-    } else if (_id === "60bce0c141057300174864c2") { //showModal2
-      setShowModal1(true);
+    } else if (_id === "60e3a121557dc20017253d87") { //samosabucket - momo dumplings
+      setShowModal(true);
       return;
     }
     addToCart();
@@ -155,14 +102,11 @@ function Item({
       {
         itemId: _id,
         qty: qty,
-        //samosabucket
+        //samosabucket - momo dumplings
         dip: dip,
         spicy: isSpicy,
         vegetarian: isVegetarian,
-        //samosabucket
-        //sample
-        meat: meat,
-        //sample
+        //samosabucket - momo dumplings
       },
       {
         withCredentials: true,
@@ -170,8 +114,7 @@ function Item({
     )
       .then((res) => {
         refreshCart();
-        setShowModal(false);
-        setShowModal1(false);
+        setShowModal(false); //samosabucket - momo dumplings
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -208,12 +151,6 @@ function Item({
               show={showModal}
               onClose={() => setShowModal(false)}
               onSave={() => setShowModal(false)}
-            />
-
-            <Doener
-              show={showModal1}
-              onClose={() => setShowModal1(false)}
-              onSave={() => setShowModal1(false)}
             />
 
           </div>
