@@ -46,7 +46,6 @@ const result = await axios({
 router.post("/", auth, async (req, res) => {
   try {
     const itemId = req.body.itemId;
-    const meat = req.body.meat; 
     const qty = req.body.qty;
     const dip = req.body.dip;
     const spicy = req.body.spicy;
@@ -65,10 +64,10 @@ router.post("/", auth, async (req, res) => {
       throw { message: "Item ID not found in the store" };
     }
 
-    if (itemId == "60bce07041057300174864c1") { //cesar saladd
+    if (itemId == "60e3a111557dc20017253d84") { //samosabucket - momo dumplings
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, dip: dip, spicy: spicy, vegetarian: vegetarian, item_name: item.name}];
-    } else if (itemId == "60bce0c141057300174864c2") { //kebap
-      user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, meat: meat, spicy: spicy, item_name: item.name}]; 
+    } else if (itemId == "60e3a121557dc20017253d87") { //samosabucket - momo dumplings
+      user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, dip: dip, spicy: spicy, vegetarian: vegetarian, item_name: item.name}];
     } else { //everything else
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, item_name: item.name}];
     }

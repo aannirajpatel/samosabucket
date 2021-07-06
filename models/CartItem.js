@@ -10,16 +10,13 @@ const CartItem = mongoose.Schema({
   price: {
     type: Number,
   },
-  dip: {
+  dip: { //samosabucket - momo dumplings
     type: String,
   },
-  meat: {
-    type: String,
-  },
-  spicy: {
+  spicy: { //samosabucket - momo dumplings
     type: Boolean,
   },
-  vegetarian: {
+  vegetarian: { //samosabucket - momo dumplings
     type: Boolean,
     // default: false,
   },
