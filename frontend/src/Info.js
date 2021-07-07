@@ -8,41 +8,20 @@ function Info() {
           <div className="subtitle is-3 has-text-centered">Help / Contact</div>
           <br></br>
 
-          <div class="columns">
-            <div class="column">
-              <div className="subtitle has-text-centered">
-                Ordering:
-              </div>
-              <p>
-                <ol>
-                  <li>Add items to cart</li>
-                  <li>Go to "Cart" and select delivery day</li>
-                  <li>To add special instructions select "change address"</li>
-                  <li>Click on CONFIRM {"&"} PAY to complete order</li>
-                </ol>
-              </p>
+          <div class="column">
+            <div className="subtitle has-text-centered">
+              Ordering:
             </div>
-            <div class="column">
-              <div className="subtitle has-text-centered">
-                Test Payment:
-              </div>
-              <p>
-                <ol>
-                  <li><b>Email:</b>&nbsp; test@gmail.com</li>
-                  <li><b>Card Number:</b>&nbsp; 4242 4242 4242 4242</li>
-                  <li><b>Date:</b>&nbsp; 12 / 2021</li>
-                  <li><b>Security Code:</b>&nbsp; 777</li>
-                </ol>
-              </p>
-            </div>
-          </div>
-
-          <br></br>
-          <div class="has-text-centered">
             <p>
-              This web app is in <b>beta version</b> so please use payment credentials above to complete order. <b>No fees will be charged.</b>
+              <ol>
+                <li>Add items to cart</li>
+                <li>Go to "Cart" and select delivery day</li>
+                <li>To add special instructions select "change address"</li>
+                <li>Click on CONFIRM {"&"} PAY to complete order</li>
+              </ol>
             </p>
           </div>
+
           <br></br>
           <hr></hr>
           <br></br>
@@ -53,7 +32,7 @@ function Info() {
           <div class="columns has-text-centered">
             <div class="column">
               <p>
-                Email: <a href="mailto:example@gmail.com">shasj@live.unc.edu</a>
+                Email: <a href="mailto:example@gmail.com">team@cloudeats.app</a>
               </p>
             </div>
             <div class="column">

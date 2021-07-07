@@ -101,7 +101,7 @@ router.post("/", auth, async (req, res) => {
           currency: "usd",
           customer: customer.id,
           receipt_email: token.email,
-          description: "Samosabucket Purchase",
+          description: "CloudEats Purchase",
           shipping: {
             name: token.card.name,
             address: {
