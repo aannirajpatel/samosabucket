@@ -173,6 +173,9 @@ function Order({
                     <td>${x.price}</td>
                     <td>{x.qty}</td>
                     <td>${x.price * x.qty}</td>
+                    {/* <td>${x.dip}</td>
+                    <td>${x.spicy}</td>
+                    <td>${x.vegetarian}</td> */}
                   </tr>
                 ))}
               </tbody>

@@ -16,7 +16,7 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [deliveryTime, setDeliveryTime] = useState("Saturday");
+  const [deliveryTime, setDeliveryTime] = useState("Sunday"); // manual change
 
   useEffect(() => {
     if (error !== "")
@@ -177,7 +177,7 @@ function Cart({ refreshCart }) {
               <br />
 
               <Form.Group inline>
-                <Form.Radio label="Saturday, July 10" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
+                {/* <Form.Radio label="Saturday, July 10" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} /> */}
                 <Form.Radio label="Sunday, July 11" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
               </Form.Group>
 
