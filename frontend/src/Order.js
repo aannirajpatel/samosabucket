@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 function Order({
   // stripePayID,
-  venmo,
+  // venmo,
   status,
   cart,
   amount,
@@ -167,7 +167,7 @@ function Order({
               <tbody>
                 {cartData.map((x, index) => (
                   // <tr key={x.itemId + index + "row" + stripePayID}>
-                  <tr key={x.itemId + index + "row" + venmo}>
+                  <tr key={x.itemId + index + "row" /*+ venmo */}>
                     <td>{index + 1}</td>
                     <td>{x.name}</td>
                     <td>${x.price}</td>
