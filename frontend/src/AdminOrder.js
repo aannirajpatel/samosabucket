@@ -30,7 +30,7 @@ function AdminOrder({
   // const [deliveryTime, setDeliveryTime] = useState(
   //   moment(est_delivery_time).utc().local().toDate()
   // );
-  // const [venmo, setVenmo] = useState("");
+  const [venmo, setVenmo] = useState("");
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
     // OUT_FOR_DELIVERY: "Out for delivery", --> we didn't need this state
@@ -61,7 +61,7 @@ function AdminOrder({
           return;
         }
         setCustomer(res.data);
-        // setVenmo(res.data.venmo);
+        setVenmo(res.data.venmo);
       })
       .catch((err) => {
         if (err.response) {
@@ -225,8 +225,8 @@ function AdminOrder({
               {/* <b>Stripe Pay ID: </b>
               {stripePayID}
               <br /> */}
-              {/* <b>Venmo ID: </b> */}
-              {/* {venmo} */}
+              <b>Venmo ID: </b>
+              {venmo}
               <br />
               <b>Delivery address</b>
               <br />
