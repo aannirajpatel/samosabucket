@@ -212,13 +212,11 @@ function Item({
             <button className="button is-primary" onClick={displayModal}>
               ADD TO CART
             </button>
-
             <ItemModal
               show={showModal}
               onClose={() => setShowModal(false)}
               onSave={() => setShowModal(false)}
             />
-
             <ItemModal2
               show={showModal2}
               onClose={() => setShowModal2(false)}

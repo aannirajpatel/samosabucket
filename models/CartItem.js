@@ -27,6 +27,10 @@ const CartItem = mongoose.Schema({
   item_name: {
     type: String,
   },
+  delivery_time: {
+    type: String,
+    default: "Saturday",
+  },
 });
 
 module.exports = mongoose.model("cartitem", CartItem);
