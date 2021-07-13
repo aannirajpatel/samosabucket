@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { stringify } = require("uuid");
 
 const CartItem = mongoose.Schema({
   itemId: {
@@ -19,6 +20,9 @@ const CartItem = mongoose.Schema({
   vegetarian: { //samosabucket - momo dumplings
     type: Boolean,
     // default: false,
+  },
+  side: { //Samosabucket - chicken tikka
+    type: String,
   },
   item_name: {
     type: String,

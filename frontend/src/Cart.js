@@ -16,7 +16,7 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [deliveryTime, setDeliveryTime] = useState("Saturday");
+  const [deliveryTime, setDeliveryTime] = useState("Sunday"); // manual change
 
   useEffect(() => {
     if (error !== "")
@@ -113,7 +113,7 @@ function Cart({ refreshCart }) {
       });
   };
 
-  const displayDate = () => { 
+  const displayDate = () => { // not if statement
     // if (_id == "60bce07041057300174864c1") { //showModal1
     //   console.log("salad");
     // } else if (_id == "60bce0c141057300174864c2") { //showModal2
@@ -177,8 +177,8 @@ function Cart({ refreshCart }) {
               <br />
 
               <Form.Group inline>
-                <Form.Radio label="Saturday, July 10" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} />
-                <Form.Radio label="Sunday, July 11" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
+                {/* <Form.Radio label="Saturday, July 10" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} /> */}
+                <Form.Radio label="Sunday, July 18" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
               </Form.Group>
 
               <br />
