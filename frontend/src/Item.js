@@ -146,24 +146,11 @@ function Item({
             <button className="button is-primary" onClick={displayModal}>
               ADD TO CART
             </button>
-
             <ItemModal
               show={showModal}
               onClose={() => setShowModal(false)}
               onSave={() => setShowModal(false)}
             />
-
-          </div>
-          <div className="control">
-            <div className="select">
-              <select onChange={handleQty} value={qty}>
-                {[...Array(5)].map((x, index) => {
-                  return (
-                    <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
-                  );
-                })}
-              </select>
-            </div>
           </div>
         </div>
       </div>
