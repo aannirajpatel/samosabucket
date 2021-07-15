@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
+function CartItem({ itemId, qty: quantity, refreshCart, spicy, ...misc }) {
   const [qty, setQty] = useState(quantity);
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -26,6 +26,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
         itemId: itemId,
         qty: qty,
         delivery_time: dTime,
+        spicy: spicy,
       },
       { withCredentials: true }
     )
