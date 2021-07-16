@@ -4,14 +4,12 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 function Order({
   // stripePayID,
-  // venmo,
   status,
   cart,
   amount,
   createdAt,
   _id,
   delivery_time,
-  // est_delivery_time,
   refreshOrders,
   setError,
   ...misc
@@ -117,10 +115,6 @@ function Order({
           <b>Amount:</b> ${amount}
           <br />
           <b>Delivery Day:</b> {delivery_time}
-          {/* {moment.utc(delivery_time).local().format("DD-MMM-YY hh:mm a")} */}
-          <br />
-          {/* Estimated delivery{" "}
-          {moment.utc(est_delivery_time).local().format("DD-MMM-YY hh:mm a")} */}
         </p>
         <p className="subtitle is-6">
           <b>Order created{" "}</b>
