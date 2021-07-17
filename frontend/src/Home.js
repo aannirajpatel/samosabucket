@@ -47,7 +47,7 @@ function Home({ refreshCart }) {
       <div className="columns is-centered">
         <div className="column is-half">
           <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
-            <img src="https://res.cloudinary.com/doc2bxwod/image/upload/v1626065570/samosabucket/a9oxgwwhkxzzgt8xdin1.jpg" alt={"Photo"} />
+            <img src={"./homepage_banner.png"} alt="photo of homepage banner" />
           </div>
           {items &&
             items.map((x) => {
