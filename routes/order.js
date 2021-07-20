@@ -121,7 +121,6 @@ router.post("/", auth, async (req, res) => {
       const orderSubmit = new Order({
         userId: mongoose.Types.ObjectId(req.user.id),
         // stripePayID: token.card.id,
-        venmo: user.venmo,
         status: "PAID",
         cart: cart,
         amount: amount,

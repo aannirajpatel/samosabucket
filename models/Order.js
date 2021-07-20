@@ -12,9 +12,6 @@ const OrderSchema = mongoose.Schema({
   //   type: String,
   //   required: true,
   // },
-  venmo: {
-    type: String,
-  },
   status: {
     type: String, //PAID, ADMIN_CANCELLED, USER_CANCELLED, DELIVERED
     default: true,

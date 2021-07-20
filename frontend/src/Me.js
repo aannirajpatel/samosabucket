@@ -16,7 +16,6 @@ function Me({ loginHandler }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
-  const [venmo, setVenmo] = useState("");
   const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -96,10 +95,6 @@ function Me({ loginHandler }) {
     setState(e.target.value);
   };
 
-  const venmoChange = (e) => {
-    setVenmo(e.target.value);
-  };
-
   const otherChange = (e) => {
     setOther(e.target.value);
   };
@@ -119,7 +114,6 @@ function Me({ loginHandler }) {
         country: "US",
       },
       phone: phone,
-      venmo: venmo,
       other: other,
     };
 
@@ -198,7 +192,6 @@ function Me({ loginHandler }) {
         setCity(res.data.address.city);
         setZip(res.data.address.zip);
         setState(res.data.address.state);
-        setVenmo(res.data.venmo);
         setOther(res.data.other);
         setIsLoading(false);
       })
@@ -415,24 +408,6 @@ function Me({ loginHandler }) {
                       required=""
                       value={zip}
                       onChange={zipChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label className="label" htmlFor="venmo">
-                  Venmo ID
-                  </label>
-                  <div className="control">
-                    <input
-                      id="venmo"
-                      name="venmo"
-                      type="text"
-                      placeholder="Optional"
-                      className="input "
-                      required=""
-                      value={venmo}
-                      onChange={venmoChange}
                     />
                   </div>
                 </div>
