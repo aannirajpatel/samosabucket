@@ -5,8 +5,6 @@ function Info() {
       <div className="columns is-centered is-vcentered">
         <div className="column is-three-quarters box">
           <br></br>
-          <div className="subtitle is-3 has-text-centered">Help / Contact</div>
-          <br></br>
 
           <div class="column">
             <div className="subtitle has-text-centered">

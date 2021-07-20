@@ -224,7 +224,7 @@ function Item({
             />
 
           </div>
-          <div className="control">
+          {/* <div className="control">
             <div className="select">
               <select onChange={handleQty} value={qty}>
                 {[...Array(5)].map((x, index) => {
@@ -234,7 +234,7 @@ function Item({
                 })}
               </select>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

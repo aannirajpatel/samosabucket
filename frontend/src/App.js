@@ -115,7 +115,7 @@ function App() {
         <Route path="/orders">
           <Orders loginHandler={loginHandler} />
         </Route>
-        <Route path="/help">
+        <Route path="/about">
           <Info />
         </Route>
         <Route path="/adminorders">

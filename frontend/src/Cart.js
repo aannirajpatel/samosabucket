@@ -16,7 +16,6 @@ function Cart({ refreshCart }) {
   const [error, setError] = useState("");
   const [total, setTotal] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [deliveryTime, setDeliveryTime] = useState("Sunday"); // manual change
 
   useEffect(() => {
     if (error !== "")
@@ -81,7 +80,6 @@ function Cart({ refreshCart }) {
     const body = {
       token,
       order,
-      deliveryTime,
     };
     Axios({
       url: process.env.REACT_APP_BACKEND_API + "/order/",
@@ -172,15 +170,6 @@ function Cart({ refreshCart }) {
           </div>
           {total > 0 && (
             <div className="container p-2">
-              <b>Set delivery day:</b>
-              <br />
-              <br />
-
-              <Form.Group inline>
-                {/* <Form.Radio label="Saturday, July 10" checked={deliveryTime === 'Saturday'} value="Saturday" onClick={() => setDeliveryTime('Saturday')} /> */}
-                <Form.Radio label="Sunday, July 18" checked={deliveryTime === 'Sunday'} value="Sunday" onClick={() => setDeliveryTime('Sunday')} />
-              </Form.Group>
-
               <br />
               <hr className="m-0" />
               <p style={{ color: '#c2252d' }}>We will text a delivery time at least 12 hours in advance</p>

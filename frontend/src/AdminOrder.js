@@ -17,7 +17,6 @@ function AdminOrder({
   setError,
   delivery_address: address,
   delivery_time,
-  //est_delivery_time,
   ...misc
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -27,24 +26,16 @@ function AdminOrder({
   const [cartData, setCartData] = useState([]);
   const [operationSelect, setOperationSelect] = useState(status);
   const [customer, setCustomer] = useState({ email: "", phone: "", name: "" });
-  // const [deliveryTime, setDeliveryTime] = useState(
-  //   moment(est_delivery_time).utc().local().toDate()
-  // );
-  const [venmo, setVenmo] = useState("");
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
-    // OUT_FOR_DELIVERY: "Out for delivery", --> we didn't need this state
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by user",
     PAID: "Amount received",
-    // PREPARING: "Preparing", --> we didn't need this state
   };
   const optionsData = [
     "ADMIN_CANCELLED",
-    // "OUT_FOR_DELIVERY", --> we didn't need this state
     "DELIVERED",
     "PAID",
-    // "PREPARING", --> we didn't need this state
   ];
 
   useEffect(() => {
@@ -61,7 +52,6 @@ function AdminOrder({
           return;
         }
         setCustomer(res.data);
-        setVenmo(res.data.venmo);
       })
       .catch((err) => {
         if (err.response) {
@@ -115,7 +105,6 @@ function AdminOrder({
       process.env.REACT_APP_BACKEND_API + "/adminorder/" + _id,
       {
         status: operationSelect,
-        // est_delivery_time: deliveryTime,
       },
       {
         withCredentials: true,
@@ -155,25 +144,8 @@ function AdminOrder({
           <br />
           <b>Status:</b> {status}
           <br />
-          <b>Delivery Day:</b> {delivery_time}  
-          {/* {moment(delivery_time).utc().local().format("hh:mm A, DD-MMM-YY")} */}
-          
+          <b>Delivery Day:</b> {delivery_time}            
         </p>
-        {/* <b>Estimated Delivery Time:</b>
-        <br />
-        <DatePicker
-          name="estDelivery"
-          selected={deliveryTime}
-          onChange={(time) => {
-            setDeliveryTime(time);
-          }}
-          showTimeSelect
-          dateFormat="Pp"
-          className="input my-2"
-          placeholderText="Set est delivery date/time"
-          required={true}
-          minDate={Date.now()}
-        /> */}
         <b>Modify status:</b>
         <br />
         <select
@@ -222,11 +194,6 @@ function AdminOrder({
               <b>Phone: </b>
               {customer?.phone}
               <br />
-              {/* <b>Stripe Pay ID: </b>
-              {stripePayID}
-              <br /> */}
-              <b>Venmo ID: </b>
-              {venmo}
               <br />
               <b>Delivery address</b>
               <br />

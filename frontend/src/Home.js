@@ -28,7 +28,7 @@ function Home({ refreshCart }) {
         if (err.response)
           setError("Error: " + err.response.status + err.response.data.message);
       });
-    return () => {};
+    return () => { };
   }, []);
   const refreshCartHandler = () => {
     toast.success("Cart updated!", {
@@ -46,11 +46,9 @@ function Home({ refreshCart }) {
     <div className="container">
       <div className="columns is-centered">
         <div className="column is-half">
-          <br></br>
-          <h1 className="has-text-centered title is-1 mb-6">
-            Grab a snack 🎯
-          </h1>
-          <br></br>
+          <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
+            <img src={"./homepage_banner.png"} alt="photo of homepage banner"/>
+          </div>
           {items &&
             items.map((x) => {
               return (
