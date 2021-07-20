@@ -171,8 +171,6 @@ function Cart({ refreshCart }) {
           {total > 0 && (
             <div className="container p-2">
               <br />
-              <br />
-              <br />
               <hr className="m-0" />
               <p style={{ color: '#c2252d' }}>We will text a delivery time at least 12 hours in advance</p>
               <div className="pay-btn">

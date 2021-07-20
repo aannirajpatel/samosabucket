@@ -216,7 +216,7 @@ function Me({ loginHandler }) {
     <div className="container">
       <div className="columns is-centered is-vcentered">
         <div className="column is-4">
-          <h1 className="title has-text-centered is-italic">User profile</h1>
+          <h1 className="title has-text-centered is-italic">Your Account</h1>
           <div className="card p-2">
             <form className="form-horizontal">
               <fieldset>

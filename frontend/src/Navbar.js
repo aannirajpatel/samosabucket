@@ -73,7 +73,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
         <div className="navbar-start">
           <Link className="navbar-item button is-light mx-2 mt-2" to="/">
             <FA name="shopping-bag" />
-            &nbsp;Shop
+            &nbsp;Restaurants
           </Link>
           <Link className="navbar-item button is-light mx-2 mt-2" to="/cart">
             <FA name="shopping-cart" />
@@ -86,9 +86,9 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
             <FA name="credit-card" />
             &nbsp;Orders
           </Link>
-          <Link className="navbar-item button is-light mx-2 mt-2" to="/help">
+          <Link className="navbar-item button is-light mx-2 mt-2" to="/about">
             <FA name="info" />
-            &nbsp;{process.env.REACT_APP_HELP_TAB_NAME || "Help"}
+            &nbsp;{process.env.REACT_APP_HELP_TAB_NAME || "About"}
           </Link>
 
           {isAdmin && (
@@ -127,7 +127,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
                 <>
                   <Link to="/me" className="button is-light">
                     <FA name="user" />
-                    &nbsp;Profile
+                    &nbsp;Account
                   </Link>
                   <Link
                     to="/"
