@@ -16,7 +16,7 @@ function Signup({ loginHandler, redirectTo }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("Alabama");
   const [zip, setZip] = useState("");
-  // const [venmo, setVenmo] = useState("");
+  const [venmo, setVenmo] = useState("");
   const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -95,9 +95,9 @@ function Signup({ loginHandler, redirectTo }) {
     setState(e.target.value);
   };
 
-  // const venmoChange = (e) => {
-  //   setVenmo(e.target.value);
-  // };
+  const venmoChange = (e) => {
+    setVenmo(e.target.value);
+  };
 
   const otherChange = (e) => {
     setOther(e.target.value);
@@ -122,7 +122,7 @@ function Signup({ loginHandler, redirectTo }) {
           country: "US",
         },
         phone: phone,
-        // venmo: venmo,
+        venmo: venmo,
         other: other,
       },
       withCredentials: true,
@@ -354,7 +354,7 @@ function Signup({ loginHandler, redirectTo }) {
                   </div>
                 </div>
 
-                {/* <div className="field">
+                <div className="field">
                   <label className="label" htmlFor="venmo" onChange={venmoChange}>
                   Venmo ID
                   </label>
@@ -370,7 +370,7 @@ function Signup({ loginHandler, redirectTo }) {
                       onChange={venmoChange}
                     />
                   </div>
-                </div> */}
+                </div>
 
                 <div className="field">
                   <label className="label" htmlFor="other" onChange={otherChange}>
@@ -412,7 +412,7 @@ function Signup({ loginHandler, redirectTo }) {
                 <p>
                   You might have missed or made a mistake on one or more fields
                   on the sign up form above. Please note that all fields except for address line
-                  2 and allergies/special instructions are required.
+                  2, Venmo ID, and allergies/special instructions are required.
                 </p>
               </div>
             )}
