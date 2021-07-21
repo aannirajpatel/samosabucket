@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
+function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian, dip, mainItem, tacoShell, ...misc }) {
   const [qty, setQty] = useState(quantity);
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -26,10 +26,12 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
         itemId: itemId,
         qty: qty,
         delivery_time: dTime,
-        spicy: spicy,
-        side: side,
-        vegetarian: vegetarian,
-        dip: dip,
+        spicy: spicy, //samosabucket
+        side: side, //Samosabucket - chicken tikka
+        vegetarian: vegetarian, //samosabucket
+        dip: dip, //samosabucket
+        mainItem: mainItem, //vegan flava cafe
+        tacoShell: tacoShell, //vegan flava cafe
       },
       { withCredentials: true }
     )
@@ -91,8 +93,8 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
             </div>
             <div className="select">
               <select onChange={handleDTime}>
-                <option> Saturday, July 10 </option>
-                <option> Sunday, July 11 </option>
+                <option> Saturday, July 31 </option>
+                <option> Sunday, August 1 </option>
               </select>
             </div>
           </div>
