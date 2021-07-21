@@ -10,7 +10,6 @@ function Order({
   createdAt,
   _id,
   delivery_time,
-  other,
   refreshOrders,
   setError,
   ...misc
@@ -36,12 +35,8 @@ function Order({
       "Order received. We will text for a delivery time at least 12 hours in advance",
     // PREPARING: "We are preparing (cooking) your order.", --> we didn't need this state
   };
-  const [otherinput, setOtherInput] = useState(other);
 
   useEffect(() => {
-    if (otherinput === undefined) {
-      setOtherInput("");
-    }
     if (showDetails === true) {
       setIsDetailsLoading(true);
 
@@ -70,11 +65,11 @@ function Order({
             );
         });
     }
-    return () => { };
+    return () => {};
   }, [showDetails]);
 
   const cancelOrder = () => {
-    if (isCancelDisabled === true) {
+    if (isCancelDisabled == true) {
       return;
     }
     setIsCancelLoading(true);
@@ -109,31 +104,6 @@ function Order({
       });
   };
 
-  const handleOtherInput = (e) => {
-    setOtherInput(e.target.value);
-  };
-  const handleOther = () => {
-    Axios.put(
-      process.env.REACT_APP_BACKEND_API + "/order/" + _id,
-      {
-        status: status,
-        other: otherinput,
-      },
-      {
-        withCredentials: true,
-      }
-    )
-      .then((res) => {
-        refreshOrders();
-      })
-      .catch((err) => {
-        refreshOrders();
-        if (err.response?.status === 401) {
-          setIsLoggedIn(false);
-        }
-      });
-  };
-
   if (!isLoggedIn) return <Redirect to="/login" />;
   return (
     <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
@@ -145,12 +115,6 @@ function Order({
           <b>Amount:</b> ${amount}
           <br />
           <b>Delivery Day:</b> {delivery_time}
-          <br />
-          <b>Other: </b>
-          <input type="text" value={otherinput} onChange={(handleOtherInput)} />
-          <button onClick={handleOther}>
-            Submit
-          </button>
         </p>
         <p className="subtitle is-6">
           <b>Order created{" "}</b>

@@ -19,7 +19,7 @@ const { v4: uuid } = require("uuid");
 
 /* 
 Endpoint:
-  POST  /order/
+	POST  /order/
 
 Purpose:
   Validates and processes an order and adds it to the MongoDB data store.
@@ -142,7 +142,7 @@ router.post("/", auth, async (req, res) => {
 
 /* 
 Endpoint:
-  GET  /order/
+	GET  /order/
 
 Purpose:
   Gets a list of all orders made by the current user.
@@ -181,7 +181,7 @@ router.get("/", auth, async (req, res) => {
 
 /* 
 Endpoint:
-  PUT  /order/:id
+	PUT  /order/:id
   Where ":id" is the Object Id of the order document
 Purpose:
   Updates the status of the order according to the user's choice. As of now, restricted to only
@@ -211,13 +211,13 @@ const result = await axios({
 
 router.put("/:id", auth, async (req, res) => {
   try {
-    const currentOrder = await Order.findById(req.params.id);
-    if (currentOrder.status !== req.body.status && req.body.status !== "USER_CANCELLED")
+    if (req.body.status !== "USER_CANCELLED")
       throw {
         message:
           "Non-admin user can only cancel their order, that too, only if it is not currently being delivered.",
       };
-    if (currentOrder.status !== req.body.status && currentOrder.status !== "PAID" && currentOrder.status !== "PREPARING")
+    const currentOrder = await Order.findById(req.params.id);
+    if (currentOrder.status !== "PAID" && currentOrder.status !== "PREPARING")
       throw { message: "Can only change order while PAID or PREPARING" };
     const order = await Order.findOneAndUpdate(
       {

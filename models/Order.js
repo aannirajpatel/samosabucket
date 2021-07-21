@@ -18,7 +18,7 @@ const OrderSchema = mongoose.Schema({
     pattern:
       //"(PAID)|(PREPARING)|(ADMIN_CANCELLED)|(USER_CANCELLED)|(OUT_FOR_DELIVERY)|(DELIVERED)", // --> we didn't need this state
       "(PAID)|(ADMIN_CANCELLED)|(USER_CANCELLED)|(DELIVERED)",
-  },
+  }, 
   delivery_address: {
     line1: String,
     line2: String,
@@ -39,10 +39,6 @@ const OrderSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
-  },
-  other: {
-    type: String,
-    default: "",
   },
 });
 
