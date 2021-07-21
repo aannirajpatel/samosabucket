@@ -52,6 +52,8 @@ router.post("/", auth, async (req, res) => {
     const vegetarian = req.body.vegetarian;
     const delivery_time = req.body.delivery_time;
     const side = req.body.side;
+    const mainItem = req.body.mainItem;
+    const tacoShell = req.body.tacoShell;
     if (itemId === null || qty === null) {
       throw { message: "Error adding to cart" };
     }
@@ -72,7 +74,15 @@ router.post("/", auth, async (req, res) => {
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, dip: dip, spicy: spicy, vegetarian: vegetarian, item_name: item.name, delivery_time: delivery_time}];
     } else if (itemId == "60ebcb00cd34f90017ac82c7") { //samosabucket - chicken tikka
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, side: side, spicy: spicy, vegetarian: vegetarian, item_name: item.name, delivery_time: delivery_time}];
-    } else { //everything else
+    } else if (itemId == "60f892c28b572f0017ef81ed") { //samosabucket - samosa
+      user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, side: side, spicy: spicy, item_name: item.name, delivery_time: delivery_time}];
+    } else if (itemId == "60dcf34954590a0017027dd4") { //vegan flava cafe - Too Tasty Walnut Tacos
+      user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, tacoShell: tacoShell, mainItem: mainItem, item_name: item.name, delivery_time: delivery_time}];
+    } else if (itemId == "60dcf48854590a0017027dd5") { //vegan flava cafe - Mock Fish Cake
+      user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, tacoShell: tacoShell, mainItem: mainItem, item_name: item.name, delivery_time: delivery_time}];
+    } 
+    
+    else { //everything else. Items without a modal popup
       user.cart = [...user.cart, { itemId: itemId, qty: qty, price: item.price, item_name: item.name, delivery_time: delivery_time}];
     }
 
