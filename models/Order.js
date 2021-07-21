@@ -5,16 +5,20 @@ const OrderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  stripePayID: {
+  name: { //added
     type: String,
-    required: true,
   },
+  // stripePayID: {
+  //   type: String,
+  //   required: true,
+  // },
   status: {
-    type: String, //PAID, PREPARING, ADMIN_CANCELLED, USER_CANCELLED, OUT_FOR_DELIVERY, DELIVERED
+    type: String, //PAID, ADMIN_CANCELLED, USER_CANCELLED, DELIVERED
     default: true,
     pattern:
-      "(PAID)|(PREPARING)|(ADMIN_CANCELLED)|(USER_CANCELLED)|(OUT_FOR_DELIVERY)|(DELIVERED)",
-  },
+      //"(PAID)|(PREPARING)|(ADMIN_CANCELLED)|(USER_CANCELLED)|(OUT_FOR_DELIVERY)|(DELIVERED)", // --> we didn't need this state
+      "(PAID)|(ADMIN_CANCELLED)|(USER_CANCELLED)|(DELIVERED)",
+  }, 
   delivery_address: {
     line1: String,
     line2: String,
@@ -24,12 +28,8 @@ const OrderSchema = mongoose.Schema({
     country: String,
   },
   delivery_time: {
-    type: Date,
-    default: Date.now(),
-  },
-  est_delivery_time: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    default: "saturday",
   },
   cart: [CartItem],
   amount: {

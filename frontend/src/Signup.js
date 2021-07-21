@@ -14,8 +14,9 @@ function Signup({ loginHandler, redirectTo }) {
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState("Alabama");
   const [zip, setZip] = useState("");
+  const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -93,6 +94,10 @@ function Signup({ loginHandler, redirectTo }) {
     setState(e.target.value);
   };
 
+  const otherChange = (e) => {
+    setOther(e.target.value);
+  };
+
   const signUpSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -112,6 +117,7 @@ function Signup({ loginHandler, redirectTo }) {
           country: "US",
         },
         phone: phone,
+        other: other,
       },
       withCredentials: true,
     })
@@ -151,7 +157,7 @@ function Signup({ loginHandler, redirectTo }) {
       <div className="columns is-centered is-vcentered">
         <div className="column is-4">
           <div className="card p-2">
-            <div className="title has-text-centered is-italic">Sign Up</div>
+            <div className="title has-text-centered">👋&nbsp;Welcome!</div>
             <form className="form-horizontal">
               <fieldset>
                 <legend></legend>
@@ -343,6 +349,24 @@ function Signup({ loginHandler, redirectTo }) {
                 </div>
 
                 <div className="field">
+                  <label className="label" htmlFor="other" onChange={otherChange}>
+                  Special Instructions / Allergies
+                  </label>
+                  <div className="control">
+                    <input
+                      id="other"
+                      name="other"
+                      type="text"
+                      placeholder="Optional"
+                      className="input "
+                      required=""
+                      value={other}
+                      onChange={otherChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
                   <label className="label" htmlFor="signup"></label>
                   <div className="control">
                     <button
@@ -363,8 +387,8 @@ function Signup({ loginHandler, redirectTo }) {
               <div className="has-background-danger has-text-white my-2 p-2">
                 <p>
                   You might have missed or made a mistake on one or more fields
-                  on the sign up form above. Please note that only address line
-                  2 is optional, everything else is required.
+                  on the sign up form above. Please note that all fields except for address line
+                  2 and allergies/special instructions are required.
                 </p>
               </div>
             )}

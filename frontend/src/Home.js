@@ -11,7 +11,7 @@ function Home({ refreshCart }) {
     if (error != "")
       toast.error("Error: " + error, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -28,12 +28,12 @@ function Home({ refreshCart }) {
         if (err.response)
           setError("Error: " + err.response.status + err.response.data.message);
       });
-    return () => {};
+    return () => { };
   }, []);
   const refreshCartHandler = () => {
     toast.success("Cart updated!", {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -46,9 +46,9 @@ function Home({ refreshCart }) {
     <div className="container">
       <div className="columns is-centered">
         <div className="column is-half">
-          <h1 className="has-text-centered title is-1 is-italic mb-6">
-            Grab a snack!
-          </h1>
+          <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
+            <img src={"./homepage_banner.png"} alt="photo of homepage banner"/>
+          </div>
           {items &&
             items.map((x) => {
               return (
@@ -62,7 +62,7 @@ function Home({ refreshCart }) {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

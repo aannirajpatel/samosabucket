@@ -33,7 +33,7 @@ function AdminOrders({ loginHandler }) {
     if (error !== "")
       toast.error("Error: " + error, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -80,7 +80,7 @@ function AdminOrders({ loginHandler }) {
           >
             PAID
           </NavTab>
-          <NavTab
+          {/* <NavTab --> we didn't need this state
             to="/adminorders/preparing"
             className={
               "button is-info m-2 mb-5 " + (activeTab == 1 ? "" : "is-outlined")
@@ -90,8 +90,8 @@ function AdminOrders({ loginHandler }) {
             }}
           >
             PREPARING
-          </NavTab>
-          <NavTab
+          </NavTab> */}
+          {/* <NavTab --> we didn't need this state
             to="/adminorders/delivering"
             className={
               "button is-info m-2 mb-5 " + (activeTab == 2 ? "" : "is-outlined")
@@ -101,7 +101,7 @@ function AdminOrders({ loginHandler }) {
             }}
           >
             DELIVERING
-          </NavTab>
+          </NavTab> */}
           <NavTab
             to="/adminorders/delivered"
             className={
@@ -155,7 +155,7 @@ function AdminOrders({ loginHandler }) {
                   );
                 })}
             </Route>
-            <Route path={`${match.path}/preparing`}>
+            {/* <Route path={`${match.path}/preparing`}> --> we didn't need this state
               <br />
               <div className="subtitle box has-text-centered mb-2">
                 {"Found " +
@@ -175,7 +175,7 @@ function AdminOrders({ loginHandler }) {
                     />
                   );
                 })}
-            </Route>
+            </Route> */}
             <Route path={`${match.path}/cancelled`}>
               <br />
               <div className="subtitle box has-text-centered mb-2">
@@ -205,7 +205,7 @@ function AdminOrders({ loginHandler }) {
                   );
                 })}
             </Route>
-            <Route path={`${match.path}/delivering`}>
+            {/* <Route path={`${match.path}/delivering`}> --> we didn't need this state
               <br />
               <div className="subtitle box has-text-centered mb-2">
                 {"Found " +
@@ -225,7 +225,7 @@ function AdminOrders({ loginHandler }) {
                     />
                   );
                 })}
-            </Route>
+            </Route> */}
             <Route path={`${match.path}/delivered`}>
               <br />
               <div className="subtitle box has-text-centered">
@@ -251,7 +251,7 @@ function AdminOrders({ loginHandler }) {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

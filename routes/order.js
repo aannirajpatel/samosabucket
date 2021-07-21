@@ -101,7 +101,7 @@ router.post("/", auth, async (req, res) => {
           currency: "usd",
           customer: customer.id,
           receipt_email: token.email,
-          description: "Samosabucket Purchase",
+          description: "CloudEats Purchase",
           shipping: {
             name: token.card.name,
             address: {
@@ -117,17 +117,18 @@ router.post("/", auth, async (req, res) => {
       );
     })
     .then(async (result) => {
-      const order = new Order({
+      const user = await User.findById(mongoose.Types.ObjectId(req.user.id));
+      const orderSubmit = new Order({
         userId: mongoose.Types.ObjectId(req.user.id),
-        stripePayID: token.card.id,
+        // stripePayID: token.card.id,
         status: "PAID",
         cart: cart,
         amount: amount,
         delivery_address: address,
         delivery_time: deliveryTime,
-        est_delivery_time: moment(deliveryTime).clone().add(30, "minutes"),
+        name: user.name, //addedd
       });
-      await order.save();
+      await orderSubmit.save();
       res.status(200).json({ message: "Order created." });
     })
     .catch((err) => {

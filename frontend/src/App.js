@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../node_modules/bulma/css/bulma.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; //added bootstrap CSS
+// import 'semantic-ui-css/semantic.min.css'; //added semantic-ui CSS
 import "./";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
@@ -32,7 +34,7 @@ function App() {
         if (isLoggedIn === false) {
           toast.success("Login successful!", {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -45,7 +47,7 @@ function App() {
           if (isAdmin === false || isAdmin === "false") {
             toast.success("Welcome, admin!", {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -67,7 +69,7 @@ function App() {
       "Note: by using this website, you agree to our Cookie policy",
       {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -93,7 +95,7 @@ function App() {
       />
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -113,7 +115,7 @@ function App() {
         <Route path="/orders">
           <Orders loginHandler={loginHandler} />
         </Route>
-        <Route path="/info">
+        <Route path="/about">
           <Info />
         </Route>
         <Route path="/adminorders">

@@ -104,7 +104,7 @@ router.post(
     if (!reqValidation.isEmpty()) {
       return res.status(400).json({ message: reqValidation.array() });
     }
-    const { email, password, name, address, phone } = req.body;
+    const { email, password, name, address, phone, other } = req.body;
     try {
       let user = await User.findOne({ email });
 
@@ -112,7 +112,7 @@ router.post(
         return res.status(400).json({ message: "User already exists" });
       }
 
-      user = new User({ email, password, name, address, phone });
+      user = new User({ email, password, name, address, phone, other });
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);

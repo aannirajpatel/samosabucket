@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 function AdminOrder({
-  stripePayID,
+  // stripePayID,
   status,
   cart,
   userId,
@@ -17,7 +17,6 @@ function AdminOrder({
   setError,
   delivery_address: address,
   delivery_time,
-  est_delivery_time,
   ...misc
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -27,23 +26,16 @@ function AdminOrder({
   const [cartData, setCartData] = useState([]);
   const [operationSelect, setOperationSelect] = useState(status);
   const [customer, setCustomer] = useState({ email: "", phone: "", name: "" });
-  const [deliveryTime, setDeliveryTime] = useState(
-    moment(est_delivery_time).utc().local().toDate()
-  );
   const statusData = {
     ADMIN_CANCELLED: "Cancelled by SamosaBucket admin",
-    OUT_FOR_DELIVERY: "Out for delivery",
     DELIVERED: "Delivered",
     USER_CANCELLED: "Cancelled by user",
     PAID: "Amount received",
-    PREPARING: "Preparing",
   };
   const optionsData = [
     "ADMIN_CANCELLED",
-    "OUT_FOR_DELIVERY",
     "DELIVERED",
     "PAID",
-    "PREPARING",
   ];
 
   useEffect(() => {
@@ -65,7 +57,7 @@ function AdminOrder({
         if (err.response) {
           toast.error("Error: " + err.response.data.message, {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -113,7 +105,6 @@ function AdminOrder({
       process.env.REACT_APP_BACKEND_API + "/adminorder/" + _id,
       {
         status: operationSelect,
-        est_delivery_time: deliveryTime,
       },
       {
         withCredentials: true,
@@ -122,7 +113,7 @@ function AdminOrder({
       .then((res) => {
         toast.success("Status updated", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -153,25 +144,8 @@ function AdminOrder({
           <br />
           <b>Status:</b> {status}
           <br />
-          <b>Requested delivery by: </b>
-          {moment(delivery_time).utc().local().format("hh:mm A, DD-MMM-YY")}
+          <b>Delivery Day:</b> {delivery_time}            
         </p>
-        <b>Estimated Delivery Time:</b>
-        <br />
-        <DatePicker
-          name="estDelivery"
-          selected={deliveryTime}
-          onChange={(time) => {
-            setDeliveryTime(time);
-          }}
-          showTimeSelect
-          dateFormat="Pp"
-          className="input my-2"
-          placeholderText="Set est delivery date/time"
-          required={true}
-          minDate={Date.now()}
-        />
-        <br />
         <b>Modify status:</b>
         <br />
         <select
@@ -220,8 +194,6 @@ function AdminOrder({
               <b>Phone: </b>
               {customer?.phone}
               <br />
-              <b>Stripe Pay ID: </b>
-              {stripePayID}
               <br />
               <b>Delivery address</b>
               <br />
@@ -244,6 +216,9 @@ function AdminOrder({
                   <th>Price</th>
                   <th>Qty</th>
                   <th>Total</th>
+                  <th>Dip</th>
+                  <th>Spicy</th>
+                  <th>Vegetarian</th>
                 </tr>
               </thead>
               <tbody>
@@ -269,7 +244,7 @@ function AdminOrder({
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

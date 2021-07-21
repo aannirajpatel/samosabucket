@@ -15,7 +15,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .then((res) => {
         toast.warn("You have been logged out.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -27,7 +27,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       .catch((e) =>
         toast.warn("Error logging out. Try clearing cookies.", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -49,7 +49,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
     >
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <img src={logo} width="112" height="28" alt="Samosabucket Logo" />
+          <img src={logo} width="180" height="20" alt="CloudEats.app Logo" />
         </Link>
 
         <span
@@ -73,7 +73,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
         <div className="navbar-start">
           <Link className="navbar-item button is-light mx-2 mt-2" to="/">
             <FA name="shopping-bag" />
-            &nbsp;Shop
+            &nbsp;Restaurants
           </Link>
           <Link className="navbar-item button is-light mx-2 mt-2" to="/cart">
             <FA name="shopping-cart" />
@@ -86,9 +86,9 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
             <FA name="credit-card" />
             &nbsp;Orders
           </Link>
-          <Link className="navbar-item button is-light mx-2 mt-2" to="/info">
+          <Link className="navbar-item button is-light mx-2 mt-2" to="/about">
             <FA name="info" />
-            &nbsp;{process.env.REACT_APP_INFO_TAB_NAME || "Info"}
+            &nbsp;{process.env.REACT_APP_HELP_TAB_NAME || "About"}
           </Link>
 
           {isAdmin && (
@@ -127,7 +127,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
                 <>
                   <Link to="/me" className="button is-light">
                     <FA name="user" />
-                    &nbsp;Profile
+                    &nbsp;Account
                   </Link>
                   <Link
                     to="/"
@@ -144,7 +144,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

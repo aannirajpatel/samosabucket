@@ -16,6 +16,7 @@ function Me({ loginHandler }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
+  const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -41,6 +42,7 @@ function Me({ loginHandler }) {
   const phoneChange = (e) => {
     setPhone(e.target.value);
   };
+
   const nameChange = (e) => {
     setName(e.target.value);
   };
@@ -93,6 +95,10 @@ function Me({ loginHandler }) {
     setState(e.target.value);
   };
 
+  const otherChange = (e) => {
+    setOther(e.target.value);
+  };
+
   const updateSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -108,6 +114,7 @@ function Me({ loginHandler }) {
         country: "US",
       },
       phone: phone,
+      other: other,
     };
 
     if (password != "") payload.password = password;
@@ -130,7 +137,7 @@ function Me({ loginHandler }) {
         setIsLoggedIn(true);
         toast.success("Update done!", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 2500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -149,7 +156,7 @@ function Me({ loginHandler }) {
           if (err.response.data.error) {
             toast.error("Error: " + err.response.data.error[0].msg, {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -160,7 +167,7 @@ function Me({ loginHandler }) {
           if (err.response.data.message) {
             toast.error("Error: " + err.response.data.message, {
               position: "top-right",
-              autoClose: 2000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -185,6 +192,7 @@ function Me({ loginHandler }) {
         setCity(res.data.address.city);
         setZip(res.data.address.zip);
         setState(res.data.address.state);
+        setOther(res.data.other);
         setIsLoading(false);
       })
       .catch((e) => {});
@@ -201,7 +209,7 @@ function Me({ loginHandler }) {
     <div className="container">
       <div className="columns is-centered is-vcentered">
         <div className="column is-4">
-          <h1 className="title has-text-centered is-italic">User profile</h1>
+          <h1 className="title has-text-centered is-italic">Your Account</h1>
           <div className="card p-2">
             <form className="form-horizontal">
               <fieldset>
@@ -405,6 +413,24 @@ function Me({ loginHandler }) {
                 </div>
 
                 <div className="field">
+                  <label className="label" htmlFor="other" onChange={otherChange}>
+                  Special Instructions / Allergies
+                  </label>
+                  <div className="control">
+                    <input
+                      id="other"
+                      name="other"
+                      type="text"
+                      placeholder="Optional"
+                      className="input "
+                      required=""
+                      value={other}
+                      onChange={otherChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
                   <label className="label" htmlFor="signup"></label>
                   <div className="control">
                     <button
@@ -434,7 +460,7 @@ function Me({ loginHandler }) {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
