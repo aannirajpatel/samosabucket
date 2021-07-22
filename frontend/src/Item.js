@@ -361,57 +361,52 @@ function Item({
       </div>
       <div className="column is-9 pl-3 pt-0 p-2">
         <p className="title is-4">{name}</p>
-        <p className="subtitle is-5">{price.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })}
-        </p>
         <p className="subtitle is-6">{description}</p>
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-primary" onClick={displayModal}>
-              ADD TO CART
-            </button>
-            <ItemModal
-              show={showModal}
-              onClose={() => setShowModal(false)}
-              onSave={() => setShowModal(false)}
-            />
-            <ItemModal2
-              show={showModal2}
-              onClose={() => setShowModal2(false)}
-              onSave={() => setShowModal2(false)}
-            />
-            <ItemModal3
-              show={showModal3}
-              onClose={() => setShowModal3(false)}
-              onSave={() => setShowModal3(false)}
-            />
+        <div className="columns is-mobile">
+          <div className="column">
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-primary" onClick={displayModal}>
+                  ADD TO CART
+                </button>
+                <ItemModal
+                  show={showModal}
+                  onClose={() => setShowModal(false)}
+                  onSave={() => setShowModal(false)}
+                />
+                <ItemModal2
+                  show={showModal2}
+                  onClose={() => setShowModal2(false)}
+                  onSave={() => setShowModal2(false)}
+                />
+                <ItemModal3
+                  show={showModal3}
+                  onClose={() => setShowModal3(false)}
+                  onSave={() => setShowModal3(false)}
+                />
 
-            <ItemModal4
-              show={showModal4}
-              onClose={() => setShowModal4(false)}
-              onSave={() => setShowModal4(false)}
-            />
+                <ItemModal4
+                  show={showModal4}
+                  onClose={() => setShowModal4(false)}
+                  onSave={() => setShowModal4(false)}
+                />
 
-            <ItemModal5
-              show={showModal5}
-              onClose={() => setShowModal5(false)}
-              onSave={() => setShowModal5(false)}
-            />
+                <ItemModal5
+                  show={showModal5}
+                  onClose={() => setShowModal5(false)}
+                  onSave={() => setShowModal5(false)}
+                />
 
-          </div>
-          {/* <div className="control">
-            <div className="select">
-              <select onChange={handleQty} value={qty}>
-                {[...Array(5)].map((x, index) => {
-                  return (
-                    <option key={"opt" + (index + 1) + _id}>{index + 1}</option>
-                  );
-                })}
-              </select>
+              </div>
             </div>
-          </div> */}
+          </div>
+          <div className="column">
+            <p className="subtitle is-5 has-text-right">{price.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              })}
+            </p>
+          </div>
         </div>
       </div>
     </div>
