@@ -1,12 +1,13 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { debounce } from "throttle-debounce";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import statesData from "./states.json";
 
-function Me({ loginHandler }) {
+function Me({ loginHandler, logoutHandler }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -178,6 +179,36 @@ function Me({ loginHandler }) {
         }
       });
   };
+
+  const handleLogout = () => {
+    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/logout", {
+      withCredentials: true,
+    })
+      .then((res) => {
+        toast.warn("You have been logged out.", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        logoutHandler();
+      })
+      .catch((e) =>
+        toast.warn("Error logging out. Try clearing cookies.", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      );
+  };
+
   useEffect(() => {
     setIsLoading(true);
     Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me", {
@@ -195,7 +226,7 @@ function Me({ loginHandler }) {
         setOther(res.data.other);
         setIsLoading(false);
       })
-      .catch((e) => {});
+      .catch((e) => { });
     return () => {
       debouncedAutocompleteQueryAndSet.cancel();
     };
@@ -414,7 +445,7 @@ function Me({ loginHandler }) {
 
                 <div className="field">
                   <label className="label" htmlFor="other" onChange={otherChange}>
-                  Special Instructions / Allergies
+                    Special Instructions / Allergies
                   </label>
                   <div className="control">
                     <input
@@ -432,7 +463,7 @@ function Me({ loginHandler }) {
 
                 <div className="field">
                   <label className="label" htmlFor="signup"></label>
-                  <div className="control">
+                  <div className="buttons">
                     <button
                       id="signup"
                       name="signup"
@@ -443,6 +474,13 @@ function Me({ loginHandler }) {
                     >
                       Update
                     </button>
+                    <Link
+                      to="/"
+                      className="button is-light"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </Link>
                   </div>
                 </div>
               </fieldset>
