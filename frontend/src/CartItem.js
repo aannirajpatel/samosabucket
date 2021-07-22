@@ -6,6 +6,12 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   let qty = quantity;
   let delivery_time = dtime;
+
+  const nextSaturday = new Date(Date.now() + (6 - new Date().getDay() + (new Date().getDay() == 6 ? 7 : 0)) * 86400000);
+  const nextSunday = new Date(Date.now() + (7 - new Date().getDay()) * 86400000);
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August",
+    "September", "October", "November", "December"];
+
   const deleteItem = () => {
     Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
       withCredentials: true,
@@ -91,8 +97,8 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
             </div>
             <div className="select">
               <select onChange={handleDTime} value={delivery_time}>
-                <option> Saturday, July 10 </option>
-                <option> Sunday, July 11 </option>
+                <option> {"Saturday, " + monthNames[nextSaturday.getMonth()] + " " + nextSaturday.getDate()} </option>
+                <option> {"Sunday, " + monthNames[nextSunday.getMonth()] + " " + nextSunday.getDate()} </option>
               </select>
             </div>
           </div>
