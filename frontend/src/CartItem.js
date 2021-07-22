@@ -84,7 +84,7 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
             </div>
             <div className="control pb-2">
               <div className="select">
-                <select onChange={handleQty} value={qty}>
+                <select onChange={handleQty} selected={qty} value={qty}>
                   {[...Array(5)].map((x, index) => {
                     return (
                       <option key={"opt" + (index + 1) + item._id}>
@@ -96,7 +96,7 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
               </div>
             </div>
             <div className="select">
-              <select onChange={handleDTime} value={delivery_time}>
+              <select onChange={handleDTime} selected={delivery_time} value={delivery_time}>
                 <option> {"Saturday, " + monthNames[nextSaturday.getMonth()] + " " + nextSaturday.getDate()} </option>
                 <option> {"Sunday, " + monthNames[nextSunday.getMonth()] + " " + nextSunday.getDate()} </option>
               </select>
