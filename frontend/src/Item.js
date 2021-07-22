@@ -14,6 +14,7 @@ function Item({
   price,
   _id,
   refreshCart,
+  restaurant,
   ...misc
 }) {
   let qty = 1;
@@ -329,6 +330,7 @@ function Item({
         mainItem: mainItem,
         tacoShell: tacoShell,
         //vegan flava cafe
+        restaurant: restaurant,
       },
       {
         withCredentials: true,
@@ -361,6 +363,7 @@ function Item({
       </div>
       <div className="column is-9 pl-3 pt-0 p-2">
         <p className="title is-4">{name}</p>
+        <p className="subtitle is-5 is-italic">{restaurant}</p>
         <p className="subtitle is-6">{description}</p>
         <div className="columns is-mobile">
           <div className="column">
