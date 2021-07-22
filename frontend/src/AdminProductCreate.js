@@ -11,6 +11,7 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
   const [dataPrice, setDataPrice] = useState("");
   const [dataDesc, setDataDesc] = useState("");
   const [dataAvailable, setDataAvailable] = useState(true);
+  const [restaurantName, setRestaurantName] = useState(""); //added restaurant name
 
   const createProduct = () => {
     setIsCreationLoading(true);
@@ -20,6 +21,7 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
         available: dataAvailable,
         imageUrl: dataImage,
         name: dataName,
+        restaurant: restaurantName, //added restaurant name
         price: dataPrice,
         description: dataDesc,
       },
@@ -44,6 +46,7 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
         setDataAvailable(true);
         setDataPrice("");
         refreshProducts();
+        setRestaurantName(""); //added restaurant name
       })
       .catch((err) => {
         refreshProducts();
@@ -98,6 +101,23 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
             <form class="form-horizontal">
               <fieldset>
                 <legend></legend>
+                <div class="field">
+                  <label class="label" htmlFor="restaurantName"> 
+                    Restaurant Name
+                  </label>
+                  <div class="control">
+                    <input
+                      name="restaurantName"
+                      type="text"
+                      class="input"
+                      required=""
+                      value={restaurantName}
+                      onChange={(e) => {
+                        setRestaurantName(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
                 <div class="field">
                   <label class="label" htmlFor="productname">
                     Product Name

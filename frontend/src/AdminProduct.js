@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 function AdminProduct({
   imageUrl,
   name,
+  restaurant,
   description,
   price,
   available,
@@ -21,6 +22,8 @@ function AdminProduct({
   const [dataPrice, setDataPrice] = useState(price);
   const [dataDesc, setDataDesc] = useState(description);
   const [dataAvailable, setDataAvailable] = useState(available === "true");
+  const [restaurantName, setRestaurantName] = useState(restaurant); //added restaurant name
+
 
   const updateProduct = () => {
     setIsUpdateLoading(true);
@@ -30,6 +33,7 @@ function AdminProduct({
         available: dataAvailable,
         imageUrl: dataImage,
         name: dataName,
+        restaurant: restaurantName, //added restaurant name
         price: dataPrice,
         description: dataDesc,
       },
@@ -116,6 +120,24 @@ function AdminProduct({
               <form class="form-horizontal">
                 <fieldset>
                   <legend></legend>
+                  <div class="field">
+                    <label class="label" htmlFor="restaurantName">
+                      Restaurant Name
+                    </label>
+                    <div class="control">
+                      <input
+                        id="restaurantName"
+                        name="restaurantName"
+                        type="text"
+                        class="input"
+                        required=""
+                        value={restaurantName}
+                        onChange={(e) => {
+                          setRestaurantName(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div class="field">
                     <label class="label" htmlFor="productname">
                       Product Name
