@@ -16,7 +16,6 @@ function AdminOrder({
   refreshOrders,
   setError,
   delivery_address: address,
-  delivery_time,
   ...misc
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
@@ -37,6 +36,7 @@ function AdminOrder({
     "DELIVERED",
     "PAID",
   ];
+  const [other, setOther] = useState("");
 
   useEffect(() => {
     Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me/" + userId, {
@@ -52,6 +52,7 @@ function AdminOrder({
           return;
         }
         setCustomer(res.data);
+        setOther(res.data.other);
       })
       .catch((err) => {
         if (err.response) {
@@ -96,7 +97,7 @@ function AdminOrder({
             );
         });
     }
-    return () => {};
+    return () => { };
   }, [showDetails]);
 
   const updateOrder = () => {
@@ -144,7 +145,7 @@ function AdminOrder({
           <br />
           <b>Status:</b> {status}
           <br />
-          <b>Delivery Day:</b> {delivery_time}            
+          <b>Special Instructions:</b> {other}
         </p>
         <b>Modify status:</b>
         <br />

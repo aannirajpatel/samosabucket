@@ -9,7 +9,7 @@ function Order({
   amount,
   createdAt,
   _id,
-  delivery_time,
+  userId,
   refreshOrders,
   setError,
   ...misc
@@ -35,8 +35,18 @@ function Order({
       "Order received. We will text for a delivery time at least 12 hours in advance",
     // PREPARING: "We are preparing (cooking) your order.", --> we didn't need this state
   };
+  const [other, setOther] = useState("");
 
   useEffect(() => {
+    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me/" + userId, {
+      withCredentials: true,
+    })
+      .then((res) => {
+        setOther(res.data.other);
+      })
+      .catch((err) => {
+      });
+
     if (showDetails === true) {
       setIsDetailsLoading(true);
 
@@ -65,7 +75,7 @@ function Order({
             );
         });
     }
-    return () => {};
+    return () => { };
   }, [showDetails]);
 
   const cancelOrder = () => {
@@ -114,7 +124,7 @@ function Order({
           <br />
           <b>Amount:</b> ${amount}
           <br />
-          <b>Delivery Day:</b> {delivery_time}
+          <b>Special Instructions:</b> {other}
         </p>
         <p className="subtitle is-6">
           <b>Order created{" "}</b>
