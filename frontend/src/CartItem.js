@@ -1,11 +1,11 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
-  const [qty, setQty] = useState(quantity);
+function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
-  let dTime;
+  let qty = quantity;
+  let delivery_time = dtime;
   const deleteItem = () => {
     Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
       withCredentials: true,
@@ -19,13 +19,13 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
         }
       });
   };
-  const updateCart = (qty) => {
+  const updateCart = () => {
     Axios.post(
       process.env.REACT_APP_BACKEND_API + "/cart/",
       {
         itemId: itemId,
         qty: qty,
-        delivery_time: dTime,
+        delivery_time: delivery_time,
         spicy: spicy,
         side: side,
         vegetarian: vegetarian,
@@ -41,12 +41,12 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
       });
   };
   const handleQty = (e) => {
-    setQty(e.target.value);
-    updateCart(e.target.value);
+    qty = e.target.value;
+    updateCart();
   };
   const handleDTime = (e) => {
-    dTime = e.target.value;
-    updateCart(qty);
+    delivery_time = e.target.value;
+    updateCart();
   };
   useEffect(() => {
     Axios.get(process.env.REACT_APP_BACKEND_API + "/store/" + itemId)
@@ -90,7 +90,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
               </div>
             </div>
             <div className="select">
-              <select onChange={handleDTime}>
+              <select onChange={handleDTime} value={delivery_time}>
                 <option> Saturday, July 10 </option>
                 <option> Sunday, July 11 </option>
               </select>
