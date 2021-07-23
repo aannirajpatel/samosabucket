@@ -75,13 +75,6 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
             <FA name="shopping-bag" />
             &nbsp;Restaurants
           </Link>
-          <Link className="navbar-item button is-light mx-2 mt-2" to="/cart">
-            <FA name="shopping-cart" />
-            &nbsp;Cart
-            {isLoggedIn && user.cart.length > 0 && (
-              <span class="badge">{user.cart.length}</span>
-            )}
-          </Link>
           <Link className="navbar-item button is-light mx-2 mt-2" to="/orders">
             <FA name="credit-card" />
             &nbsp;Orders
@@ -135,6 +128,13 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
                     onClick={handleLogout}
                   >
                     Logout
+                  </Link>
+                  <Link className="button is-light" to="/cart">
+                    <FA name="shopping-cart" />
+                    &nbsp;Cart
+                    {isLoggedIn && user.cart.length > 0 && (
+                    <span class="badge">{user.cart.length}</span>
+                    )}
                   </Link>
                 </>
               )}
