@@ -27,10 +27,6 @@ const OrderSchema = mongoose.Schema({
     state: String,
     country: String,
   },
-  delivery_time: {
-    type: String,
-    default: "saturday",
-  },
   cart: [CartItem],
   amount: {
     type: Number,
@@ -39,10 +35,6 @@ const OrderSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
-  },
-  other: {
-    type: String,
-    default: "",
   },
 });
 

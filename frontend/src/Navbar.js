@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
@@ -6,36 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 var FA = require("react-fontawesome");
 
-function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
+function Navbar({ isAdmin, isLoggedIn, user }) {
   const [isHBActive, setIsHBActive] = useState(false);
-  const handleLogout = () => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/logout", {
-      withCredentials: true,
-    })
-      .then((res) => {
-        toast.warn("You have been logged out.", {
-          position: "top-right",
-          autoClose: 2500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        logoutHandler();
-      })
-      .catch((e) =>
-        toast.warn("Error logging out. Try clearing cookies.", {
-          position: "top-right",
-          autoClose: 2500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-      );
-  };
 
   const toggleMenu = () => {
     setIsHBActive(!isHBActive);
@@ -121,20 +92,6 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
                   <Link to="/me" className="button is-light">
                     <FA name="user" />
                     &nbsp;Account
-                  </Link>
-                  <Link
-                    to="/"
-                    className="button is-light"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </Link>
-                  <Link className="button is-light" to="/cart">
-                    <FA name="shopping-cart" />
-                    &nbsp;Cart
-                    {isLoggedIn && user.cart.length > 0 && (
-                    <span class="badge">{user.cart.length}</span>
-                    )}
                   </Link>
                 </>
               )}

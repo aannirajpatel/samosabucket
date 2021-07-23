@@ -88,7 +88,7 @@ const result = await axios({
 
 router.post("/", auth, async (req, res) => {
   //pass on a token from frontend - email, prod info, charge/price of product
-  const { order, token, deliveryTime } = req.body;
+  const { order, token, } = req.body;
   const { cart, amount, address } = order;
 
   const idempotencyKey = uuid();
@@ -125,7 +125,6 @@ router.post("/", auth, async (req, res) => {
         cart: cart,
         amount: amount,
         delivery_address: address,
-        delivery_time: deliveryTime,
         name: user.name, //addedd
       });
       await orderSubmit.save();
@@ -211,13 +210,13 @@ const result = await axios({
 
 router.put("/:id", auth, async (req, res) => {
   try {
-    const currentOrder = await Order.findById(req.params.id);
-    if (currentOrder.status !== req.body.status && req.body.status !== "USER_CANCELLED")
+    if (req.body.status !== "USER_CANCELLED")
       throw {
         message:
           "Non-admin user can only cancel their order, that too, only if it is not currently being delivered.",
       };
-    if (currentOrder.status !== req.body.status && currentOrder.status !== "PAID" && currentOrder.status !== "PREPARING")
+    const currentOrder = await Order.findById(req.params.id);
+    if (currentOrder.status !== "PAID" && currentOrder.status !== "PREPARING")
       throw { message: "Can only change order while PAID or PREPARING" };
     const order = await Order.findOneAndUpdate(
       {
