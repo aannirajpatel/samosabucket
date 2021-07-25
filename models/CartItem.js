@@ -28,6 +28,12 @@ const CartItem = mongoose.Schema({
   side: { //Samosabucket - chicken tikka
     type: String,
   },
+  mainItem: { //vegan flava cafe
+    type: String,
+  },
+  tacoShell: { //vegan flava cafe
+    type: String,
+  },
   item_name: {
     type: String,
   },

@@ -3,6 +3,9 @@ const ItemSchema = mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  restaurant: { //added restaurant name
+    type: String
+  },
   name: {
     type: String,
     required: true,

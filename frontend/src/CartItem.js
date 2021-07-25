@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
+
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   let qty = quantity;
@@ -31,11 +32,13 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
       {
         itemId: itemId,
         qty: qty,
-        delivery_time: delivery_time,
-        spicy: spicy,
-        side: side,
-        vegetarian: vegetarian,
-        dip: dip,
+        delivery_time: dTime,
+        spicy: spicy, //samosabucket
+        side: side, //Samosabucket - chicken tikka
+        vegetarian: vegetarian, //samosabucket
+        dip: dip, //samosabucket
+        mainItem: mainItem, //vegan flava cafe
+        tacoShell: tacoShell, //vegan flava cafe
       },
       { withCredentials: true }
     )
@@ -97,8 +100,8 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
             </div>
             <div className="select">
               <select onChange={handleDTime} selected={delivery_time} value={delivery_time}>
-                <option> {"Saturday, " + monthNames[nextSaturday.getMonth()] + " " + nextSaturday.getDate()} </option>
-                <option> {"Sunday, " + monthNames[nextSunday.getMonth()] + " " + nextSunday.getDate()} </option>
+                <option> Saturday, July 31 </option>
+                <option> Sunday, August 1 </option>
               </select>
             </div>
           </div>
