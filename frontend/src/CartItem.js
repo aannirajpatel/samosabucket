@@ -1,11 +1,18 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian, dip, mainItem, tacoShell, ...misc }) {
-  const [qty, setQty] = useState(quantity);
+function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
+
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
-  let dTime;
+  let qty = quantity;
+  let delivery_time = dtime;
+
+  const nextSaturday = new Date(Date.now() + (6 - new Date().getDay() + (new Date().getDay() == 6 ? 7 : 0)) * 86400000);
+  const nextSunday = new Date(Date.now() + (7 - new Date().getDay()) * 86400000);
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August",
+    "September", "October", "November", "December"];
+
   const deleteItem = () => {
     Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
       withCredentials: true,
@@ -19,7 +26,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
         }
       });
   };
-  const updateCart = (qty) => {
+  const updateCart = () => {
     Axios.post(
       process.env.REACT_APP_BACKEND_API + "/cart/",
       {
@@ -43,12 +50,12 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
       });
   };
   const handleQty = (e) => {
-    setQty(e.target.value);
-    updateCart(e.target.value);
+    qty = e.target.value;
+    updateCart();
   };
   const handleDTime = (e) => {
-    dTime = e.target.value;
-    updateCart(qty);
+    delivery_time = e.target.value;
+    updateCart();
   };
   useEffect(() => {
     Axios.get(process.env.REACT_APP_BACKEND_API + "/store/" + itemId)
@@ -80,7 +87,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
             </div>
             <div className="control pb-2">
               <div className="select">
-                <select onChange={handleQty} value={qty}>
+                <select onChange={handleQty} selected={qty} value={qty}>
                   {[...Array(5)].map((x, index) => {
                     return (
                       <option key={"opt" + (index + 1) + item._id}>
@@ -92,7 +99,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, spicy, side, vegetarian,
               </div>
             </div>
             <div className="select">
-              <select onChange={handleDTime}>
+              <select onChange={handleDTime} selected={delivery_time} value={delivery_time}>
                 <option> Saturday, July 31 </option>
                 <option> Sunday, August 1 </option>
               </select>

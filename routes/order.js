@@ -19,7 +19,7 @@ const { v4: uuid } = require("uuid");
 
 /* 
 Endpoint:
-	POST  /order/
+  POST  /order/
 
 Purpose:
   Validates and processes an order and adds it to the MongoDB data store.
@@ -88,7 +88,7 @@ const result = await axios({
 
 router.post("/", auth, async (req, res) => {
   //pass on a token from frontend - email, prod info, charge/price of product
-  const { order, token, deliveryTime } = req.body;
+  const { order, token, } = req.body;
   const { cart, amount, address } = order;
 
   const idempotencyKey = uuid();
@@ -125,7 +125,6 @@ router.post("/", auth, async (req, res) => {
         cart: cart,
         amount: amount,
         delivery_address: address,
-        delivery_time: deliveryTime,
         name: user.name, //addedd
       });
       await orderSubmit.save();
@@ -142,7 +141,7 @@ router.post("/", auth, async (req, res) => {
 
 /* 
 Endpoint:
-	GET  /order/
+  GET  /order/
 
 Purpose:
   Gets a list of all orders made by the current user.
@@ -181,7 +180,7 @@ router.get("/", auth, async (req, res) => {
 
 /* 
 Endpoint:
-	PUT  /order/:id
+  PUT  /order/:id
   Where ":id" is the Object Id of the order document
 Purpose:
   Updates the status of the order according to the user's choice. As of now, restricted to only

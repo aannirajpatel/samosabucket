@@ -77,7 +77,7 @@ function App() {
         progress: undefined,
       }
     );
-    return () => {};
+    return () => { };
   }, []);
   const logoutHandler = () => {
     setUser({ name: "", isAdmin: false, cart: [] });
@@ -91,7 +91,6 @@ function App() {
         user={user}
         isAdmin={isAdmin}
         isLoggedIn={isLoggedIn}
-        logoutHandler={logoutHandler}
       />
       <ToastContainer
         position="top-right"
@@ -108,9 +107,12 @@ function App() {
         atEnter={{ opacity: 0 }}
         atActive={{ opacity: 1 }}
         className="switch-wrapper"
+        user={user}
+        isAdmin={isAdmin}
+        isLoggedIn={isLoggedIn}
       >
         <Route path="/me">
-          <Me loginHandler={loginHandler} />
+          <Me loginHandler={loginHandler} logoutHandler={logoutHandler} />
         </Route>
         <Route path="/orders">
           <Orders loginHandler={loginHandler} />
