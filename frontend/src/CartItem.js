@@ -1,17 +1,14 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, spicy, side, vegetarian, dip, ...misc }) {
+function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, spicy, side, vegetarian, dip, mainItem: mitem, tacoShell: tshell, ...misc }) {
 
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   let qty = quantity;
   let delivery_time = dtime;
-
-  const nextSaturday = new Date(Date.now() + (6 - new Date().getDay() + (new Date().getDay() == 6 ? 7 : 0)) * 86400000);
-  const nextSunday = new Date(Date.now() + (7 - new Date().getDay()) * 86400000);
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August",
-    "September", "October", "November", "December"];
+  let mainItem = mitem;
+  let tacoShell = tshell;
 
   const deleteItem = () => {
     Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
@@ -32,7 +29,7 @@ function CartItem({ itemId, qty: quantity, delivery_time: dtime, refreshCart, sp
       {
         itemId: itemId,
         qty: qty,
-        delivery_time: dTime,
+        delivery_time: delivery_time,
         spicy: spicy, //samosabucket
         side: side, //Samosabucket - chicken tikka
         vegetarian: vegetarian, //samosabucket
