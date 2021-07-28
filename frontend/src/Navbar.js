@@ -93,7 +93,7 @@ function Navbar({ isAdmin, isLoggedIn, user }) {
                     <FA name="user" />
                     &nbsp;Account
                   </Link>
-                  <Link className="button is-light" to="/cart">
+                  <Link className="button is-primary" to="/cart">
                     <FA name="shopping-cart" />
                     &nbsp;Cart
                     {isLoggedIn && user.cart.length > 0 && (

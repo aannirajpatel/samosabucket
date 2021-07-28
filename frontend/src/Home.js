@@ -46,9 +46,12 @@ function Home({ refreshCart }) {
     <div className="container">
       <div className="columns is-centered">
         <div className="column is-half">
-          <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
+          {/* <div className="columns is-mobile is-centered is-vcentered box p-0 mb-5">
             <img src={"./homepage_banner.png"} alt="photo of homepage banner"/>
-          </div>
+          </div> */}
+          <h1 className="has-text-centered title is-1 mb-6">
+            Grab a snack 🌮
+          </h1>
           {items &&
             items.map((x) => {
               return (
