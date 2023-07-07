@@ -18,8 +18,6 @@ RUN cd frontend && npm install && npm run build
 
 # Expose ports
 EXPOSE 5000
-EXPOSE 80
-EXPOSE 443
 
 # Set environment variables (these will be provided by the hosting service)
 # ENV DB_URL=<your-db-url>
@@ -37,17 +35,5 @@ EXPOSE 443
 # ENV ENFORCE_HTTPS=false
 # ENV WEBAPP_ORIGIN=<samosabucket-webapp-origin-url>
 
-# Install NGINX
-RUN apk add --no-cache nginx
-
-# Create an empty default.conf file
-RUN mkdir -p /etc/nginx/conf.d && touch /etc/nginx/conf.d/default.conf
-
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Copy custom Nginx configuration
-ADD nginx/nginx.dev.conf /etc/nginx/nginx.conf
-
-# Start Nginx and the Node.js server
-CMD nginx && node index.js
+# Start the Node.js server
+CMD node index.js
