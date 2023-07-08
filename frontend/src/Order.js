@@ -42,7 +42,7 @@ function Order({
       setIsDetailsLoading(true);
 
       Axios.post(
-        process.env.REACT_APP_BACKEND_API + "/adminproduct/list",
+        window.env.REACT_APP_BACKEND_API + "/adminproduct/list",
         cart.map((x) => x.itemId),
         {
           withCredentials: true,
@@ -66,7 +66,7 @@ function Order({
             );
         });
     }
-    return () => {};
+    return () => { };
   }, [showDetails]);
 
   const cancelOrder = () => {
@@ -75,7 +75,7 @@ function Order({
     }
     setIsCancelLoading(true);
     Axios.put(
-      process.env.REACT_APP_BACKEND_API + "/order/" + _id,
+      window.env.REACT_APP_BACKEND_API + "/order/" + _id,
       {
         status: "USER_CANCELLED",
       },

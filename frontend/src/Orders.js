@@ -12,7 +12,7 @@ function Orders({ loginHandler }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const refreshOrders = (str) => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/order/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/order/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -54,7 +54,7 @@ function Orders({ loginHandler }) {
 
   useEffect(() => {
     loginHandler();
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/order/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/order/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -69,7 +69,7 @@ function Orders({ loginHandler }) {
             setError(err.response.status + " " + err.response.data.message);
         }
       });
-    return () => {};
+    return () => { };
   }, []);
 
   if (!isLoggedIn)

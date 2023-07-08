@@ -15,7 +15,7 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
   const createProduct = () => {
     setIsCreationLoading(true);
     Axios.post(
-      process.env.REACT_APP_BACKEND_API + "/adminproduct/",
+      window.env.REACT_APP_BACKEND_API + "/adminproduct/",
       {
         available: dataAvailable,
         imageUrl: dataImage,
@@ -57,10 +57,10 @@ function AdminProductCreate({ refreshProducts, ...misc }) {
     e.preventDefault();
     window.cloudinary.openUploadWidget(
       {
-        cloudName: process.env.REACT_APP_CLOUDINARY_CLOUDNAME,
+        cloudName: window.env.REACT_APP_CLOUDINARY_CLOUDNAME,
         uploadPreset:
-          process.env.REACT_APP_CLOUDINARY_UPLOADPRESET || "samosabucket",
-        folder: process.env.REACT_APP_CLOUDINARY_FOLDER || "samosabucket",
+          window.env.REACT_APP_CLOUDINARY_UPLOADPRESET || "samosabucket",
+        folder: window.env.REACT_APP_CLOUDINARY_FOLDER || "samosabucket",
         sources: ["local", "url"],
         maxFiles: 1,
         cropping: true,

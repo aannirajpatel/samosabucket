@@ -20,7 +20,7 @@ function Home({ refreshCart }) {
       });
   }, [error]);
   useEffect(() => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/store/")
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/store/")
       .then((res) => {
         setItems(res.data);
       })
@@ -28,7 +28,7 @@ function Home({ refreshCart }) {
         if (err.response)
           setError("Error: " + err.response.status + err.response.data.message);
       });
-    return () => {};
+    return () => { };
   }, []);
   const refreshCartHandler = () => {
     toast.success("Cart updated!", {
