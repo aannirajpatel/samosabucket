@@ -24,7 +24,7 @@ function App() {
 
   const loginHandler = () => {
     axios
-      .get(process.env.REACT_APP_BACKEND_API + "/user/me", {
+      .get(window.env.REACT_APP_BACKEND_API + "/user/me", {
         withCredentials: true,
       })
       .then((res) => {
@@ -75,7 +75,7 @@ function App() {
         progress: undefined,
       }
     );
-    return () => {};
+    return () => { };
   }, []);
   const logoutHandler = () => {
     setUser({ name: "", isAdmin: false, cart: [] });

@@ -9,7 +9,7 @@ var FA = require("react-fontawesome");
 function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
   const [isHBActive, setIsHBActive] = useState(false);
   const handleLogout = () => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/logout", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/user/logout", {
       withCredentials: true,
     })
       .then((res) => {
@@ -88,7 +88,7 @@ function Navbar({ isAdmin, isLoggedIn, user, logoutHandler }) {
           </Link>
           <Link className="navbar-item button is-light mx-2 mt-2" to="/info">
             <FA name="info" />
-            &nbsp;{process.env.REACT_APP_INFO_TAB_NAME || "Info"}
+            &nbsp;{window.env.REACT_APP_INFO_TAB_NAME || "Info"}
           </Link>
 
           {isAdmin && (

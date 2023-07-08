@@ -22,7 +22,7 @@ function Login({ loginHandler, redirectTo }) {
     setIsLoading(true);
     Axios({
       method: "post",
-      url: process.env.REACT_APP_BACKEND_API + "/user/login",
+      url: window.env.REACT_APP_BACKEND_API + "/user/login",
       data: {
         email: email,
         password: password,

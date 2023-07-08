@@ -17,7 +17,7 @@ function AdminProducts({ loginHandler }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const refreshProducts = () => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/adminproduct/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/adminproduct/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -47,7 +47,7 @@ function AdminProducts({ loginHandler }) {
 
   useEffect(() => {
     loginHandler();
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/adminproduct/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/adminproduct/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -61,7 +61,7 @@ function AdminProducts({ loginHandler }) {
           );
         }
       });
-    return () => {};
+    return () => { };
   }, []);
 
   if (!isLoggedIn)

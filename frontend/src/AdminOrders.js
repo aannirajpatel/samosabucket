@@ -16,7 +16,7 @@ function AdminOrders({ loginHandler }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const refreshOrders = () => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/adminorder/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/adminorder/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -44,7 +44,7 @@ function AdminOrders({ loginHandler }) {
 
   useEffect(() => {
     loginHandler();
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/adminorder/", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/adminorder/", {
       withCredentials: true,
     })
       .then((res) => {
@@ -56,7 +56,7 @@ function AdminOrders({ loginHandler }) {
           setError(err.response.status + " " + err.response.data?.message);
         }
       });
-    return () => {};
+    return () => { };
   }, []);
 
   if (!isLoggedIn)

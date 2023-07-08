@@ -52,9 +52,9 @@ function Signup({ loginHandler, redirectTo }) {
   const autocompleteQueryAndSet = (text) => {
     Axios({
       method: "get",
-      url: process.env.REACT_APP_POSITIONSTACK_API,
+      url: window.env.REACT_APP_POSITIONSTACK_API,
       params: {
-        access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
+        access_key: window.env.REACT_APP_POSITIONSTACK_API_KEY,
         query: text,
         country: "US",
       },
@@ -71,7 +71,7 @@ function Signup({ loginHandler, redirectTo }) {
   const line1Change = (e) => {
     setLine1(e.target.value);
     if (e.target.value.length > 3) {
-      if (process.env.REACT_APP_POSITIONSTACK_ENABLED === "TRUE") {
+      if (window.env.REACT_APP_POSITIONSTACK_ENABLED === "TRUE") {
         debouncedAutocompleteQueryAndSet(e.target.value);
       }
     } else {
@@ -98,7 +98,7 @@ function Signup({ loginHandler, redirectTo }) {
     setIsLoading(true);
     Axios({
       method: "post",
-      url: process.env.REACT_APP_BACKEND_API + "/user/signup",
+      url: window.env.REACT_APP_BACKEND_API + "/user/signup",
       data: {
         email: email,
         password: password,

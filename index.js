@@ -13,7 +13,7 @@ const path = require("path");
 const StartMongo = require("./config/db");
 StartMongo();
 const PORT = process.env.PORT || 5000;
-app.use(cors({ credentials: true, origin: "*" }));
+app.use(cors({ credentials: true, origin: process.env.WEBAPP_ORIGIN ?? 'http://localhost:3000' }));
 app.use(bodyParser.json());
 /* BACKEND API ENDPOINTS */
 

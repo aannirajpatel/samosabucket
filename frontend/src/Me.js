@@ -52,9 +52,9 @@ function Me({ loginHandler }) {
   const autocompleteQueryAndSet = (text) => {
     Axios({
       method: "get",
-      url: process.env.REACT_APP_POSITIONSTACK_API,
+      url: window.env.REACT_APP_POSITIONSTACK_API,
       params: {
-        access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
+        access_key: window.env.REACT_APP_POSITIONSTACK_API_KEY,
         query: text,
         country: "US",
       },
@@ -71,7 +71,7 @@ function Me({ loginHandler }) {
   const line1Change = (e) => {
     setLine1(e.target.value);
     if (e.target.value.length > 3) {
-      if (process.env.REACT_APP_POSITIONSTACK_ENABLED === "TRUE") {
+      if (window.env.REACT_APP_POSITIONSTACK_ENABLED === "TRUE") {
         debouncedAutocompleteQueryAndSet(e.target.value);
       }
     } else {
@@ -113,7 +113,7 @@ function Me({ loginHandler }) {
     if (password != "") payload.password = password;
     Axios({
       method: "put",
-      url: process.env.REACT_APP_BACKEND_API + "/user/me",
+      url: window.env.REACT_APP_BACKEND_API + "/user/me",
       data: payload,
       withCredentials: true,
     })
@@ -173,7 +173,7 @@ function Me({ loginHandler }) {
   };
   useEffect(() => {
     setIsLoading(true);
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/user/me", {
       withCredentials: true,
     })
       .then((res) => {
@@ -187,7 +187,7 @@ function Me({ loginHandler }) {
         setState(res.data.address.state);
         setIsLoading(false);
       })
-      .catch((e) => {});
+      .catch((e) => { });
     return () => {
       debouncedAutocompleteQueryAndSet.cancel();
     };

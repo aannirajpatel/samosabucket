@@ -23,5 +23,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-Dockerfile.dev
-frontend/public/env.js
