@@ -31,7 +31,7 @@ function Cart({ refreshCart }) {
   }, [error]);
 
   const refreshCartPage = (suppressToast = false) => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me", {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/user/me", {
       withCredentials: true,
     })
       .then((res) => {
@@ -72,7 +72,7 @@ function Cart({ refreshCart }) {
   };
   useEffect(() => {
     refreshCartPage(true);
-    return () => {};
+    return () => { };
   }, []);
 
   const makePayment = (token) => {
@@ -82,13 +82,13 @@ function Cart({ refreshCart }) {
       deliveryTime,
     };
     Axios({
-      url: process.env.REACT_APP_BACKEND_API + "/order/",
+      url: window.env.REACT_APP_BACKEND_API + "/order/",
       method: "post",
       data: body,
       withCredentials: true,
     })
       .then(async (res) => {
-        await Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/", {
+        await Axios.delete(window.env.REACT_APP_BACKEND_API + "/cart/", {
           withCredentials: true,
         });
         toast.success(
@@ -174,7 +174,7 @@ function Cart({ refreshCart }) {
               <br />
               <div className="pay-btn">
                 <StripeCheckout
-                  stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+                  stripeKey={window.env.REACT_APP_STRIPE_PUBLIC_KEY}
                   token={makePayment}
                   name="Samosabucket Purchase"
                   amount={total * 100}

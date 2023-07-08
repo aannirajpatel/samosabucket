@@ -47,7 +47,7 @@ function AdminOrder({
   ];
 
   useEffect(() => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/user/me/" + userId, {
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/user/me/" + userId, {
       withCredentials: true,
     })
       .then((res) => {
@@ -80,7 +80,7 @@ function AdminOrder({
       setIsDetailsLoading(true);
 
       Axios.post(
-        process.env.REACT_APP_BACKEND_API + "/adminproduct/list",
+        window.env.REACT_APP_BACKEND_API + "/adminproduct/list",
         cart.map((x) => x.itemId),
         {
           withCredentials: true,
@@ -104,13 +104,13 @@ function AdminOrder({
             );
         });
     }
-    return () => {};
+    return () => { };
   }, [showDetails]);
 
   const updateOrder = () => {
     setIsUpdateLoading(true);
     Axios.put(
-      process.env.REACT_APP_BACKEND_API + "/adminorder/" + _id,
+      window.env.REACT_APP_BACKEND_API + "/adminorder/" + _id,
       {
         status: operationSelect,
         est_delivery_time: deliveryTime,

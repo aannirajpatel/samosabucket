@@ -6,7 +6,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
   const [item, setItem] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   const deleteItem = () => {
-    Axios.delete(process.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
+    Axios.delete(window.env.REACT_APP_BACKEND_API + "/cart/" + itemId, {
       withCredentials: true,
     })
       .then((res) => {
@@ -20,7 +20,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
   };
   const updateCart = (qty) => {
     Axios.post(
-      process.env.REACT_APP_BACKEND_API + "/cart/",
+      window.env.REACT_APP_BACKEND_API + "/cart/",
       {
         itemId: itemId,
         qty: qty,
@@ -39,7 +39,7 @@ function CartItem({ itemId, qty: quantity, refreshCart, ...misc }) {
     updateCart(e.target.value);
   };
   useEffect(() => {
-    Axios.get(process.env.REACT_APP_BACKEND_API + "/store/" + itemId)
+    Axios.get(window.env.REACT_APP_BACKEND_API + "/store/" + itemId)
       .then((res) => {
         setItem(res.data);
       })

@@ -14,7 +14,7 @@ function Item({
   const [isLoggedIn, setIsLoggedIn] = useState(true); //assume logged in already.
   const addToCart = () => {
     Axios.post(
-      process.env.REACT_APP_BACKEND_API + "/cart/",
+      window.env.REACT_APP_BACKEND_API + "/cart/",
       {
         itemId: _id,
         qty: qty,
