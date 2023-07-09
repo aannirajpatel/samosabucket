@@ -30,10 +30,12 @@ app.use("/adminorder", adminOrder);
 app.use("/adminproduct", adminProduct);
 
 /* FOR SERVING THE REACT APP: */
-app.use(express.static(path.join(__dirname, "frontend/build")));
-app.get("*", (request, res) => {
-  res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
-});
+if (process.env.SERVE_WEBAPP === 'TRUE') {
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+  app.get("*", (request, res) => {
+    res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server started at PORT ${PORT}`);
