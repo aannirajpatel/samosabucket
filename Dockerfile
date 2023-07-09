@@ -13,9 +13,6 @@ RUN npm install --production
 # Copy the rest of the application code
 COPY . .
 
-# Build the React frontend
-RUN cd frontend && npm install && npm run build
-
 # Expose ports
 EXPOSE 5000
 
